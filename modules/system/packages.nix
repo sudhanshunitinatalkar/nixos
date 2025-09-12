@@ -3,7 +3,6 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; 
   [
-    home-manager
     vim
     wget
     curl

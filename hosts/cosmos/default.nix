@@ -7,6 +7,8 @@
         ./hardware-configuration.nix
     ../../modules/system/configuration.nix
     ../../modules/hardware/nvidia.nix
+
+    ../../modules/home/cosmos.nix 
   ];
 
   # Define the hostname for this specific machine

@@ -1,29 +1,35 @@
 {
-  description = "NixOS System Configuration for Cosmos";
+  description = "Cosmos NixOS Monorepo";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    # Define our package set once for the whole system
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true; # Allow unfree packages here
+      config.allowUnfree = true;
     };
   in
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem {
       inherit system;
-      # This is the old way that causes the warning
-      # specialArgs = { inherit pkgs; };
-
-      # This is the new, "correct" way
+      # This is the "correct" way that resolves the warning
       modules = [
-        { nixpkgs.pkgs = pkgs; } # Explicitly tell NixOS which pkgs to use
+        # Explicitly tell NixOS which pkgs to use
+        { nixpkgs.pkgs = pkgs; }
+
+        # Import the main configuration for our host "cosmos"
         ./hosts/cosmos/default.nix
+
+        # Make Home Manager available as a module
+        home-manager.nixosModules.home-manager
       ];
     };
   };
