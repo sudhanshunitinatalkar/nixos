@@ -23,6 +23,7 @@
         neofetch
         cheese
         rpi-imager
+        appflowy
     ];
 
     programs.git = 
