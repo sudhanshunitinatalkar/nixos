@@ -10,6 +10,12 @@
   services.pipewire.pulse.enable = true;
   services.openssh.enable = true;
   services.cloudflared.enable = true;
+  services.ollama = 
+  {
+    enable = true;
+    acceleration = "cuda";
+  };
+
 
   # Firewall configuration for KDE Connect
   networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
