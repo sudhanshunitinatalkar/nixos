@@ -25,7 +25,7 @@
     nvidiaSettings = true;
 
     # Select the latest stable driver.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
 
     # This is the most important section for your laptop!
     prime = {
