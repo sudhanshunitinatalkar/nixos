@@ -7,8 +7,6 @@
     wget
     curl
     git
-    docker
-    docker-compose
     kdePackages.sddm-kcm
   ];
 
