@@ -23,7 +23,8 @@
         neofetch
         cheese
         rpi-imager
-        appflowy
+        kdePackages.isoimagewriter
+        kdePackages.ktorrent
     ];
 
     programs.git = 

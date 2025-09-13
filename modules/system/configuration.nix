@@ -23,7 +23,7 @@
   users.users.cosmicdust = 
   {
      isNormalUser = true;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "docker"];
   };
 
   system.stateVersion = "25.05";

@@ -10,6 +10,7 @@
   services.pipewire.pulse.enable = true;
   services.openssh.enable = true;
   services.cloudflared.enable = true;
+  virtualisation.docker.enable = true;
   services.ollama = 
   {
     enable = true;
