@@ -25,7 +25,7 @@
         rpi-imager
         kdePackages.isoimagewriter
         kdePackages.ktorrent
-        joplin-dekstop
+        joplin-desktop
     ];
 
     programs.git = 
