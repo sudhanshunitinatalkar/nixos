@@ -26,6 +26,7 @@
         kdePackages.isoimagewriter
         kdePackages.ktorrent
         joplin-desktop
+        tree
     ];
 
     programs.git = 
