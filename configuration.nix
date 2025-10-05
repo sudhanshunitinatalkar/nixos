@@ -17,7 +17,7 @@
   networking.hostName = "cosmos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   hardware.bluetooth.enable = true;
-  # Set your time zone.
+ 
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
@@ -54,12 +54,12 @@
   services.pipewire.pulse.enable = true;
   services.openssh.enable = true;
   services.cloudflared.enable = true;
+  services.postgresql.enable = true;
   services.ollama =
   {
     enable = true;
     acceleration = "cuda";
   };
-  services.postgresql.enable = true;
 
 
   # Open ports in the firewall.

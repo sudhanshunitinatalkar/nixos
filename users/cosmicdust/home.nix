@@ -19,5 +19,14 @@
         kdePackages.isoimagewriter
     ];
 
+
+  programs.git = 
+  {
+    enable = true;
+    userName = "sudhanshunitinatalkar";
+    userEmail = "atalkarsudhanshu@proton.me";
+  };
+
+
    home.stateVersion = "25.05";
 }
