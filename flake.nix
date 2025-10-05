@@ -15,6 +15,7 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+    stateVersion = "25.05";
   in
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem 
@@ -26,7 +27,12 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.cosmicdust = ./users/cosmicdust/home.nix;
+
+          home-manager.users.cosmicdust = 
+          {
+            imports = [ ./users/cosmicdust/home.nix ];
+            home.stateVersion = stateVersion;
+          };
         }
       ];
     };
@@ -34,7 +40,12 @@
     homeConfigurations.cosmicdust = home-manager.lib.homeManagerConfiguration 
     {
       inherit pkgs;
-      modules = [ ./users/cosmicdust/home.nix ];
+      modules = 
+      [ 
+        ./users/cosmicdust/home.nix 
+        { home.stateVersion = stateVersion; }
+      ];
     };
+
   };
 }
