@@ -5,7 +5,6 @@
     [ 
       ./hardware-configuration.nix
       ./nvidia.nix
-      ./cosmicdust.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -13,6 +12,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "cosmos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -22,6 +22,13 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+
+  users.users.cosmicdust = 
+  {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; 
