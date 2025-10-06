@@ -39,6 +39,7 @@
     git
     gptfdisk
     util-linux
+    cloudflared
     kdePackages.sddm-kcm
   ];
 
@@ -63,10 +64,10 @@
 
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-  networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  # networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  # networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+   networking.firewall.enable = false;
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.05"; # Did you read the comment?

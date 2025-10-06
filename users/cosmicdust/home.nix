@@ -6,6 +6,9 @@
         tree
         vscode
         arduino-ide
+        python3
+        kicad
+        freecad
         prusa-slicer
         libreoffice-fresh
         telegram-desktop
@@ -15,6 +18,7 @@
         vlc
         cheese
         rpi-imager
+        mosquitto
         kdePackages.ktorrent
         kdePackages.isoimagewriter
     ];
