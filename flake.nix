@@ -9,9 +9,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = 
+    {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };

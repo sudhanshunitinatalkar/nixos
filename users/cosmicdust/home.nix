@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+   
     home.packages = with pkgs; 
     [
         tree
@@ -30,5 +31,5 @@
     userName = "sudhanshunitinatalkar";
     userEmail = "atalkarsudhanshu@proton.me";
   };
-
+  
 }

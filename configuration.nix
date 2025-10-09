@@ -27,7 +27,7 @@
   users.users.cosmicdust = 
   {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel"];
   };
 
   # List packages installed in system profile.
@@ -40,8 +40,11 @@
     gptfdisk
     util-linux
     cloudflared
+    android-tools
     kdePackages.sddm-kcm
   ];
+
+
 
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
@@ -61,7 +64,6 @@
     enable = true;
     acceleration = "cuda";
   };
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
