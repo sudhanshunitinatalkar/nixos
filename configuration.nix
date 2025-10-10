@@ -65,6 +65,14 @@
     acceleration = "cuda";
   };
 
+  programs.steam = 
+  {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
   # networking.firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
