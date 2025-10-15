@@ -74,6 +74,13 @@
     extraGroups = [ "wheel" ];
   };
 
+  users.users.pbr = 
+  {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+
   environment.systemPackages = with pkgs; 
   [
     
