@@ -9,10 +9,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = 
+    {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
-  outputs = inputs@{ self, nixpkgs,home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs,home-manager, sops-nix, ... }: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
@@ -52,9 +57,10 @@
       inherit pkgs;
       modules = 
       [
-         { system.stateVersion = stateVersion; }
+        { system.stateVersion = stateVersion; }
         ./hosts/pbrresearch/configuration.nix
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
