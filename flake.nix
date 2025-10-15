@@ -33,6 +33,7 @@
         ./modules/nvidia.nix
         ./hosts/cosmos/configuration.nix
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
