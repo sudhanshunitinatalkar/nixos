@@ -71,7 +71,7 @@
   users.users.cosmicdust = 
   {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "dialout"];
   };
 
   users.users.pbr = 

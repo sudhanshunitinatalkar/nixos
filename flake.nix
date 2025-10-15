@@ -70,6 +70,12 @@
             home.stateVersion = stateVersion; 
           };
 
+          home-manager.users.shreeyash = 
+          {
+            imports = [./users/shreeyash/home.nix];
+            home.stateVersion = stateVersion; 
+          };
+
         }
       ];
     };
@@ -81,16 +87,6 @@
       [ 
         { home.stateVersion = stateVersion; } 
         ./users/cosmicdust/home.nix
-      ];
-    };
-
-    homeConfigurations."pbr" = home-manager.lib.homeManagerConfiguration
-    { 
-      inherit pkgs;
-      modules = 
-      [ 
-        { home.stateVersion = stateVersion; } 
-        ./users/pbr/home.nix
       ];
     };
 

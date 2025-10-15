@@ -87,6 +87,12 @@
     extraGroups = [ "wheel" ];
   };
 
+  users.users.shreeyash = 
+  {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
   environment.systemPackages = with pkgs; 
   [
     tree
