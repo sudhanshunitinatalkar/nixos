@@ -14,8 +14,9 @@
     kernelPackages = pkgs.linuxPackages_latest;
     loader = 
     {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      grub.enable = true;
+      grub.version = 2; # GRUB 2 is the default, but good to be explicit
+      grub.device = "/dev/sda";
     };
     
   };
