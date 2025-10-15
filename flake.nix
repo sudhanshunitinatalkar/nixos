@@ -24,7 +24,9 @@
       inherit pkgs;
       modules = 
       [
-        ./configuration.nix
+        { system.stateVersion = stateVersion; }
+        ./modules/nvidia.nix
+        ./hosts/cosmos/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -34,9 +36,41 @@
             imports = [./users/cosmicdust/home.nix];
             home.stateVersion = stateVersion; 
           };
+
+          home-manager.users.pbr = 
+          {
+            imports = [./users/pbr/home.nix];
+            home.stateVersion = stateVersion; 
+          };
+
         }
-        { system.stateVersion = stateVersion; }
-        
+      ];
+    };
+
+    nixosConfigurations.pbrresearch = nixpkgs.lib.nixosSystem
+    {
+      inherit pkgs;
+      modules = 
+      [
+         { system.stateVersion = stateVersion; }
+        hosts/pbrresearch/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.cosmicdust = 
+          {
+            imports = [./users/cosmicdust/home.nix];
+            home.stateVersion = stateVersion; 
+          };
+
+          home-manager.users.pbr = 
+          {
+            imports = [./users/pbr/home.nix];
+            home.stateVersion = stateVersion; 
+          };
+
+        }
       ];
     };
 
@@ -45,9 +79,20 @@
       inherit pkgs;
       modules = 
       [ 
-        ./users/cosmicdust/home.nix
         { home.stateVersion = stateVersion; } 
+        ./users/cosmicdust/home.nix
       ];
     };
+
+    homeConfigurations."pbr" = home-manager.lib.homeManagerConfiguration
+    { 
+      inherit pkgs;
+      modules = 
+      [ 
+        { home.stateVersion = stateVersion; } 
+        ./users/pbr/home.nix
+      ];
+    };
+
   };
 }
