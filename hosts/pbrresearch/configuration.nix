@@ -73,8 +73,35 @@
       enable = true;
       pulse.enable = true;
     };
+    
+    cloudflared = 
+    {
+      enable = true;
+      tunnels = 
+      {
+        "af58ebe4-56c0-46a6-9281-367d1c68aff5" = 
+        {
+          credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+          default = "http_status:404";
+          ingress =
+          {
+            "pbrlocal.eltros.in" = 
+            {
+            service = "ssh://localhost:22";
+            };
+          };
+        };
+      };
+    };
 
-    cloudflared.enable = true;
+    openssh.settings.Macs = 
+    [
+      "hmac-sha2-512-etm@openssh.com"
+      "hmac-sha2-256-etm@openssh.com"
+      "umac-128-etm@openssh.com"
+      "hmac-sha2-256" # The required addition
+    ];
+
     postgresql.enable = true;
     ollama =
     {
