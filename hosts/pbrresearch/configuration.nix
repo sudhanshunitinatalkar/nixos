@@ -70,7 +70,6 @@
     ollama =
     {
       enable = true;
-      acceleration = "cuda";
     };
     
   };
