@@ -53,7 +53,7 @@
       modules = 
       [
          { system.stateVersion = stateVersion; }
-        hosts/pbrresearch/configuration.nix
+        ./hosts/pbrresearch/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

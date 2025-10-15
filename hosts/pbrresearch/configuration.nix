@@ -24,7 +24,7 @@
 
   networking = 
   {
-    hostName = "cosmos";
+    hostName = "pbrresearch";
     networkmanager.enable = true;
     firewall.enable = false;
     # firewall.allowedTCPPorts = [ ];
@@ -44,9 +44,16 @@
 
   services = 
   {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
+    xserver = 
+    {
+      enable = true;
+      desktopManager = 
+      {
+        xterm.enable = false;
+        xfce.enable = true;
+      };
+    };
+    displayManager.defaultSession = "xfce";
 
     printing.enable = true;
     libinput.enable = true;
@@ -68,6 +75,12 @@
     
   };
 
+  users.users.pbr = 
+  {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
   users.users.cosmicdust = 
   {
     isNormalUser = true;
@@ -76,7 +89,14 @@
 
   environment.systemPackages = with pkgs; 
   [
-    
+    tree
+    util-linux
+    vim
+    wget
+    curl
+    git
+    gptfdisk
+    cloudflared
     kdePackages.sddm-kcm
   ];
 
