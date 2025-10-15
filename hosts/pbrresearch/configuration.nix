@@ -102,6 +102,12 @@
       "hmac-sha2-256" # The required addition
     ];
 
+    sops.secrets.cloudflared-creds = 
+    {
+      owner = config.services.cloudflared.user;
+      group = config.services.cloudflared.group;
+    };
+
     postgresql.enable = true;
     ollama =
     {
@@ -138,6 +144,7 @@
     git
     gptfdisk
     cloudflared
+    sops-nix
     kdePackages.sddm-kcm
   ];
 
