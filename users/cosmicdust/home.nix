@@ -1,10 +1,18 @@
 { pkgs, ... }:
 
 {
-   
     home.packages = with pkgs; 
     [
         tree
+        util-linux
+        vim
+        wget
+        curl
+        git
+        gptfdisk
+        
+        cloudflared
+        android-tools
         vscode
         arduino-ide
         python3

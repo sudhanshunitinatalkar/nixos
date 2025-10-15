@@ -1,30 +1,27 @@
 {
-  description = "A simple NixOS flake";
+  description = "cosmos";
 
   inputs = 
   {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = 
     {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = 
-    {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs,home-manager, ... }: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
     stateVersion = "25.05";
   in
   {
-    nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem 
+    nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem
     {
+      inherit pkgs;
       modules = 
       [
         ./configuration.nix
@@ -32,25 +29,25 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
           home-manager.users.cosmicdust = 
           {
-            imports = [ ./users/cosmicdust/home.nix ];
-            home.stateVersion = stateVersion;
+            imports = [./users/cosmicdust/home.nix];
+            home.stateVersion = stateVersion; 
           };
         }
+        { system.stateVersion = stateVersion; }
+        
       ];
     };
 
-    homeConfigurations.cosmicdust = home-manager.lib.homeManagerConfiguration 
-    {
+    homeConfigurations."cosmicdust" = home-manager.lib.homeManagerConfiguration
+    { 
       inherit pkgs;
       modules = 
       [ 
-        ./users/cosmicdust/home.nix 
-        { home.stateVersion = stateVersion; }
+        ./users/cosmicdust/home.nix
+        { home.stateVersion = stateVersion; } 
       ];
     };
-
   };
 }

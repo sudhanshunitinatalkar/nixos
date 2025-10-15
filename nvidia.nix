@@ -9,12 +9,12 @@
   # Load drivers for both AMD iGPU and NVIDIA dGPU.
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
-  hardware.nvidia = 
+  hardware.nvidia =
   {
     # Modesetting is required for Wayland and modern Xorg.
     modesetting.enable = true;
 
-    # Use the opensource NVIDIA driver. 
+    # Use the opensource NVIDIA driver.
     open = true;
 
     # Power management is essential for laptops to turn off the dGPU when not in use.
@@ -30,7 +30,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
 
     # This is the most important section for your laptop!
-    prime = 
+    prime =
     {
       # Enable PRIME Render Offload.
       offload.enable = true;
