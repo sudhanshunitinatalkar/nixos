@@ -53,8 +53,17 @@
         xfce.enable = true;
       };
     };
-    displayManager.defaultSession = "xfce";
 
+    displayManager = 
+    {
+      defaultSession = "xfce";
+      # Add this block for automatic login
+      autoLogin = 
+      {
+        enable = true;
+        user = "pbr";
+      };
+    };
     printing.enable = true;
     libinput.enable = true;
     openssh.enable = true;
