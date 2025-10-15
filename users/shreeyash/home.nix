@@ -13,7 +13,7 @@
         
         cloudflared
 
-        kikad
+        kicad
     ];
 
 
