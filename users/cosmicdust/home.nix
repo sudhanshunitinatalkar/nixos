@@ -10,9 +10,11 @@
         curl
         git
         gptfdisk
-        
-        cloudflared
+        htop
+        fastfetch
         android-tools
+  
+        cloudflared
         vscode
         arduino-ide
         python3

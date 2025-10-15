@@ -83,7 +83,17 @@
 
   environment.systemPackages = with pkgs; 
   [
-    
+
+    tree
+    util-linux
+    vim
+    wget
+    curl
+    git
+    gptfdisk
+    htop
+    fastfetch
+    android-tools
     kdePackages.sddm-kcm
   ];
 
