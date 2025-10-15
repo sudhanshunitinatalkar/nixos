@@ -42,47 +42,6 @@
             imports = [./users/cosmicdust/home.nix];
             home.stateVersion = stateVersion; 
           };
-
-          home-manager.users.pbr = 
-          {
-            imports = [./users/pbr/home.nix];
-            home.stateVersion = stateVersion; 
-          };
-
-        }
-      ];
-    };
-
-    nixosConfigurations.pbrresearch = nixpkgs.lib.nixosSystem
-    {
-      inherit pkgs;
-      modules = 
-      [
-        { system.stateVersion = stateVersion; }
-        ./hosts/pbrresearch/configuration.nix
-        home-manager.nixosModules.home-manager
-        sops-nix.nixosModules.sops
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.cosmicdust = 
-          {
-            imports = [./users/cosmicdust/home.nix];
-            home.stateVersion = stateVersion; 
-          };
-
-          home-manager.users.pbr = 
-          {
-            imports = [./users/pbr/home.nix];
-            home.stateVersion = stateVersion; 
-          };
-
-          home-manager.users.shreeyash = 
-          {
-            imports = [./users/shreeyash/home.nix];
-            home.stateVersion = stateVersion; 
-          };
-
         }
       ];
     };
