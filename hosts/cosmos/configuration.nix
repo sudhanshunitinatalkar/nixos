@@ -2,12 +2,19 @@
 
 {
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  system.stateVersion = "25.05";
 
   imports =
   [ 
     ./hardware-configuration.nix
+    ../../users/cosmicdust/cosmicdust.nix
   ];
+
+  home-manager = 
+  {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
   boot = 
   {
@@ -68,11 +75,7 @@
     
   };
 
-  users.users.cosmicdust = 
-  {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "dialout"];
-  };
+  
 
   environment.systemPackages = with pkgs; 
   [
@@ -84,9 +87,6 @@
     git
     gptfdisk
     htop
-    fastfetch
-    android-tools
-    sops
     kdePackages.sddm-kcm
   ];
 
