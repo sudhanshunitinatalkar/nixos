@@ -51,10 +51,6 @@
 
   services = 
   {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-
     printing.enable = true;
     libinput.enable = true;
     openssh.enable = true;
@@ -87,7 +83,6 @@
     git
     gptfdisk
     htop
-    kdePackages.sddm-kcm
   ];
 
   time.timeZone = "Asia/Kolkata";

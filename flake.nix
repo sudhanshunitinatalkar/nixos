@@ -30,6 +30,7 @@
         nixpkgs.nixosModules.readOnlyPkgs
         { nixpkgs.pkgs = pkgs; }
         ./modules/nvidia.nix
+        ./modules/plasma.nix
         ./hosts/cosmos/configuration.nix
         home-manager.nixosModules.home-manager
       ];
