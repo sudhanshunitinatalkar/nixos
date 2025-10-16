@@ -74,16 +74,8 @@
     extraGroups = [ "wheel" "dialout"];
   };
 
-  users.users.pbr = 
-  {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
-
   environment.systemPackages = with pkgs; 
   [
-
     tree
     util-linux
     vim
@@ -94,6 +86,7 @@
     htop
     fastfetch
     android-tools
+    sops
     kdePackages.sddm-kcm
   ];
 

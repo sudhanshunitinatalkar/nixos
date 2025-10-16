@@ -17,7 +17,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs,home-manager, sops-nix, ... }: 
+  outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }: 
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
@@ -29,7 +29,9 @@
       inherit pkgs;
       modules = 
       [
-        { system.stateVersion = stateVersion; }
+        { 
+          system.stateVersion = stateVersion;
+        }
         ./modules/nvidia.nix
         ./hosts/cosmos/configuration.nix
         home-manager.nixosModules.home-manager
@@ -51,7 +53,10 @@
       inherit pkgs;
       modules = 
       [ 
-        { home.stateVersion = stateVersion; } 
+        { 
+          home.stateVersion = stateVersion; 
+        }
+        sops-nix.nixosModules.sops 
         ./users/cosmicdust/home.nix
       ];
     };

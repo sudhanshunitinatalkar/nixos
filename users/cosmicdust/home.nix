@@ -13,6 +13,8 @@
         htop
         fastfetch
         android-tools
+        sops
+        home-manager
   
         cloudflared
         vscode
