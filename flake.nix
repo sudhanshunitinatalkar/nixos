@@ -27,15 +27,15 @@
     {
       modules = 
       [
+        home-manager.nixosModules.home-manager
         nixpkgs.nixosModules.readOnlyPkgs
         { nixpkgs.pkgs = pkgs; }
-        ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
         ./modules/steam.nix
         ./hosts/cosmos/configuration.nix
-        ./users/cosmicdust/cosmicdust.nix
-        home-manager.nixosModules.home-manager
+        ./users/cosmicdust/cosmicdust.nix      
       ];
     };
   };
 }
+c
