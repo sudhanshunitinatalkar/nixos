@@ -29,9 +29,11 @@
       [
         nixpkgs.nixosModules.readOnlyPkgs
         { nixpkgs.pkgs = pkgs; }
-        ./modules/nvidia.nix
+        ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
+        ./modules/steam.nix
         ./hosts/cosmos/configuration.nix
+        ./users/cosmicdust/cosmicdust.nix
         home-manager.nixosModules.home-manager
       ];
     };

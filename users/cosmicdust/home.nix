@@ -2,7 +2,7 @@
 
 {
 
-    home.stateVersion = "25.05";
+    home.stateVersion = "25.11";
 
     home.packages = with pkgs; 
     [
@@ -46,5 +46,4 @@
     userName = "sudhanshunitinatalkar";
     userEmail = "atalkarsudhanshu@proton.me";
   };
-  
 }

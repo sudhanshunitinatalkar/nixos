@@ -2,12 +2,14 @@
 
 {
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 
   imports =
   [ 
     ./hardware-configuration.nix
-    ../../users/cosmicdust/cosmicdust.nix
   ];
 
   home-manager = 
@@ -15,6 +17,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
   };
+
 
   boot = 
   {
