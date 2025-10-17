@@ -86,6 +86,8 @@
     git
     gptfdisk
     htop
+    pciutils
+    home-manager
   ];
 
   time.timeZone = "Asia/Kolkata";

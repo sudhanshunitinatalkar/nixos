@@ -17,6 +17,7 @@
         fastfetch
         android-tools
         sops
+        pciutils
         home-manager
   
         cloudflared
