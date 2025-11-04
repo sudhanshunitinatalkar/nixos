@@ -3,7 +3,7 @@
 {
 
   system.stateVersion = "25.11";
-
+  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
@@ -21,7 +21,7 @@
 
   boot = 
   {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     loader = 
     {
       systemd-boot.enable = true;
@@ -73,8 +73,6 @@
     };
     
   };
-
-  
 
   environment.systemPackages = with pkgs; 
   [
