@@ -19,7 +19,7 @@
 
     users.sudhanshu = 
     {
-      imports = [ ../../users/sudhanshu/home.nix ];
+      imports = [ ../home/home.nix ];
     };
 
   };

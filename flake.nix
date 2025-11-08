@@ -22,7 +22,6 @@
         ./modules/plasma.nix
         ./modules/steam.nix
         ./host/configuration.nix
-        ./home/home.nix
       ];
     };
   };
