@@ -65,11 +65,15 @@
     };
 
     cloudflared.enable = true;
-    postgresql.enable = true;
     ollama =
     {
       enable = true;
       acceleration = "cuda";
+    };
+
+    postgresql = 
+    {
+      enable = true;
     };
     
   };

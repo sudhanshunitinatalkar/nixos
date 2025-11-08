@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     home-manager = 
     {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -22,7 +22,8 @@
         ./modules/plasma.nix
         ./modules/steam.nix
         ./hosts/cosmos/configuration.nix
-        ./users/sudhanshu/sudhanshu.nix      
+        ./users/sudhanshu/sudhanshu.nix
+        ./modules/thingsboard.nix      
       ];
     };
   };
