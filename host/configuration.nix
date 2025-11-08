@@ -16,8 +16,19 @@
   {
     useGlobalPkgs = true;
     useUserPackages = true;
+
+    users.sudhanshu = 
+    {
+      imports = [ ../../users/sudhanshu/home.nix ];
+    };
+
   };
 
+  users.users.sudhanshu = 
+  {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "dialout" ];
+  };
 
   boot = 
   {

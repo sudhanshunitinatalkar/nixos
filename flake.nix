@@ -21,9 +21,8 @@
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
         ./modules/steam.nix
-        ./hosts/cosmos/configuration.nix
-        ./users/sudhanshu/sudhanshu.nix
-        ./modules/thingsboard.nix      
+        ./host/configuration.nix
+        ./home/home.nix
       ];
     };
   };
