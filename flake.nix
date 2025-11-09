@@ -15,12 +15,32 @@
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem
     {
+
+      home-manager = 
+      {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+
+        users.sudhanshu = 
+        {
+          imports = [ ./home/home.nix ];
+        };
+
+      };
+
+      users.users.sudhanshu = 
+      {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "dialout" ];
+      };
+      
       modules = 
       [
         home-manager.nixosModules.home-manager
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
         ./modules/steam.nix
+        ./modules/thingsboard.nix
         ./host/configuration.nix
       ];
     };

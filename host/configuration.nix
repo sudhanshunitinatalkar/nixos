@@ -12,24 +12,6 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager = 
-  {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-
-    users.sudhanshu = 
-    {
-      imports = [ ../home/home.nix ];
-    };
-
-  };
-
-  users.users.sudhanshu = 
-  {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "dialout" ];
-  };
-
   boot = 
   {
     kernelPackages = pkgs.linuxPackages;
@@ -82,9 +64,19 @@
       acceleration = "cuda";
     };
 
-    postgresql = 
-    {
+    # nixos/host/configuration.nix
+
+    postgresql = {
       enable = true;
+      # Ensure standard authentication methods are set:
+      # - 'local all all peer': Allows users to connect via socket if their OS username matches the DB username.
+      # - 'host all all 127.0.0.1/32 scram-sha-256': Requires password for TCP connections (used by ThingsBoard).
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     peer
+        host  all       all     127.0.0.1/32   scram-sha-256
+        host  all       all     ::1/128        scram-sha-256
+      '';
     };
     
   };
