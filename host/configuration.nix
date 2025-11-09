@@ -2,7 +2,6 @@
 
 {
 
-  system.stateVersion = "25.11";
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -94,8 +93,6 @@
     pciutils
     home-manager
   ];
-
-  time.timeZone = "Asia/Kolkata";
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = 

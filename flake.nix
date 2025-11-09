@@ -13,35 +13,42 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
   {
-    nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem
+    nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem 
     {
-
-      home-manager = 
-      {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-
-        users.sudhanshu = 
-        {
-          imports = [ ./home/home.nix ];
-        };
-
-      };
-
-      users.users.sudhanshu = 
-      {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "dialout" ];
-      };
-      
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = 
       [
         home-manager.nixosModules.home-manager
+        ./host/configuration.nix
+
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
         ./modules/steam.nix
         ./modules/thingsboard.nix
-        ./host/configuration.nix
+
+        ({ config, pkgs, ... }: 
+        {
+          time.timeZone = "Asia/Kolkata";
+          system.stateVersion = "25.05";
+
+          users.users.sudhanshu = 
+          {
+            isNormalUser = true;
+            extraGroups = [ "wheel" "dialout" ];
+          };
+
+          home-manager = 
+          {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.sudhanshu = 
+            {
+               imports = [ ./home/home.nix ];
+               home.stateVersion = "25.05";
+            };
+          };
+        })
       ];
     };
   };
