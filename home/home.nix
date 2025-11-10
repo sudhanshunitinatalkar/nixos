@@ -33,6 +33,9 @@
         cheese
         rpi-imager
         mosquitto
+        appflowy
+        logseq
+        thonny
         kdePackages.ktorrent
         kdePackages.isoimagewriter
     ];
