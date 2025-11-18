@@ -3,10 +3,10 @@
 
   inputs = 
   {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = 
     {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -25,16 +25,14 @@
 
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
-        ./modules/steam.nix
-        ./modules/thingsboard.nix
-
+        
         ({ config, pkgs, ... }: 
         {
           # Added to ensure NixOS also allows unfree
           nixpkgs.config.allowUnfree = true;
 
           time.timeZone = "Asia/Kolkata";
-          system.stateVersion = "25.05";
+          system.stateVersion = "25.11";
 
           users.users.sudhanshu = 
           {
@@ -49,19 +47,17 @@
             extraSpecialArgs = { inherit inputs; };
             users.sudhanshu = {
                imports = [ ./home/home.nix ];
-               home.stateVersion = "25.05";
+               home.stateVersion = "25.11";
             };
           };
         })
       ];
     };
 
-    # --- New Standalone Home Manager Configuration (WSL/Ubuntu) ---
-    # Usage: home-manager switch --flake .#sudhanshu
+    # Usage: nix run home-manager -- switch --flake .#sudhanshu
     homeConfigurations."sudhanshu" = 
     let
       system = "x86_64-linux";
-      # Manually configure pkgs to allow unfree on non-NixOS systems
       pkgs = import nixpkgs 
       {
         inherit system;
@@ -75,10 +71,9 @@
       modules = [
         ./home/home.nix
         {
-          home.stateVersion = "25.05";
+          home.stateVersion = "25.11";
           home.username = "sudhanshu";
           home.homeDirectory = "/home/sudhanshu";
-          # targets.genericLinux.enable = true; # Uncomment if you get permission errors on WSL
         }
       ];
     };
