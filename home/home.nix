@@ -39,7 +39,7 @@
   programs.git = 
   {
     enable = true;
-    settings.user.name = "sudhanshunitinatalkar";
-    settings.user.email = "atalkarsudhanshu@proton.me";
+    userName = "sudhanshunitinatalkar";
+    userEmail = "atalkarsudhanshu@proton.me";
   };
 }
