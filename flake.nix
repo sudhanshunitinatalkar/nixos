@@ -69,7 +69,7 @@
       inherit pkgs;
       extraSpecialArgs = { inherit inputs; };
       modules = [
-        ./home/home.nix
+        ./home-manager/home.nix
         {
           home.stateVersion = "25.11";
           home.username = "sudhanshu";
