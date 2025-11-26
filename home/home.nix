@@ -1,9 +1,12 @@
 { pkgs, inputs, ... }:
 
 let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+  unstable = import inputs.nixpkgs-unstable 
+  {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
 in
-
 {
     home.packages = with pkgs; 
     [
@@ -19,17 +22,21 @@ in
         android-tools
         sops
         pciutils
-        home-manager
   
         cloudflared
-        arduino-ide
-        prusa-slicer
-        libreoffice-fresh
-        telegram-desktop
-        gimp
-        inkscape
-        vlc
-        unstable.vscodium
+        unstable.arduino-ide
+        unstable.prusa-slicer
+        unstable.libreoffice-fresh
+        unstable.telegram-desktop
+        unstable.gimp
+        unstable.inkscape
+        unstable.vlc
+        unstable.fragments
+        unstable.vscode
+        unstable.zed-editor
+        
+        nil
+        nixd
     ];
 
 
