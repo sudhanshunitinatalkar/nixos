@@ -34,9 +34,11 @@ in
         unstable.fragments
         unstable.vscode
         unstable.zed-editor
+        unstable.brave
         
         nil
         nixd
+        ruff
     ];
 
 
