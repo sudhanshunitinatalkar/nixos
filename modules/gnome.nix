@@ -3,6 +3,15 @@
       # Enable the X11 windowing system.
    services.displayManager.gdm.enable = true;
    services.desktopManager.gnome.enable = true;
+
+   programs.dconf.settings = 
+    {
+        "org/gnome/mutter" = 
+        {
+            experimental-features = [ "scale-monitor-framebuffer" ];
+        };
+    };
+    
    environment.gnome.excludePackages = 
     (with pkgs; [
     epiphany # web browser
