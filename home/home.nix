@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+
+let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in
 
 {
     home.packages = with pkgs; 
@@ -18,21 +22,14 @@
         home-manager
   
         cloudflared
-        vscode
         arduino-ide
-        python3
-        kicad
-        freecad
         prusa-slicer
         libreoffice-fresh
         telegram-desktop
         gimp
         inkscape
         vlc
-        cheese
-        rpi-imager
-        kdePackages.ktorrent
-        kdePackages.isoimagewriter
+        unstable.vscodium
     ];
 
 
@@ -42,4 +39,5 @@
     userName = "sudhanshunitinatalkar";
     userEmail = "atalkarsudhanshu@proton.me";
   };
+
 }

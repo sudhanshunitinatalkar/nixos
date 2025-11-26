@@ -1,7 +1,27 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
+
+let
+  unstable = import inputs.nixpkgs-unstable 
+  {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings = 
+  {
+    substituters = 
+    [
+      "https://cuda-maintainers.cachix.org"
+    ];
+    trusted-public-keys = 
+    [
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    ];
+  };
 
   imports =
   [ 
@@ -57,6 +77,7 @@
     {
       enable = true;
       acceleration = "cuda";
+      package = unstable.ollama;
     };
 
     
@@ -73,7 +94,6 @@
     gptfdisk
     htop
     pciutils
-    home-manager
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
