@@ -34,12 +34,8 @@ in
         unstable.vlc
         unstable.fragments
         unstable.vscode
-        unstable.brave
-        unstable.rpi-imager
-        
-        nil
-        nixd
-        ruff
+        rpi-imager
+      
     ];
 
 
