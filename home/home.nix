@@ -33,7 +33,6 @@ in
         unstable.vlc
         unstable.fragments
         unstable.vscode
-        unstable.zed-editor
         unstable.brave
         
         nil
