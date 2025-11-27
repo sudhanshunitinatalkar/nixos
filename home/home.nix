@@ -3,7 +3,7 @@
 let
   unstable = import inputs.nixpkgs-unstable 
   {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
 in
@@ -22,6 +22,7 @@ in
         android-tools
         sops
         pciutils
+        mosquitto
   
         cloudflared
         unstable.arduino-ide
@@ -34,6 +35,7 @@ in
         unstable.fragments
         unstable.vscode
         unstable.brave
+        unstable.rpi-imager
         
         nil
         nixd
@@ -44,8 +46,8 @@ in
   programs.git = 
   {
     enable = true;
-    userName = "sudhanshunitinatalkar";
-    userEmail = "atalkarsudhanshu@proton.me";
+    settings.user.name = "sudhanshunitinatalkar";
+    settings.user.email = "atalkarsudhanshu@proton.me";
   };
 
 }
