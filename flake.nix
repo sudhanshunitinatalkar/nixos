@@ -38,6 +38,8 @@
             extraGroups = [ "wheel" "dialout" ];
           };
 
+          nix.settings.trusted-users = [ "sudhanshu" ];
+        
           home-manager = 
           {
             useGlobalPkgs = true;
