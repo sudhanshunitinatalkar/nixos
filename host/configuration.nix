@@ -80,6 +80,19 @@ in
       package = unstable.ollama;
     };
 
+
+    cloudflared = {
+      enable = true;
+      tunnels = {
+        "89889c44-3d02-4b7e-830e-40ead7cfc02c" = {
+          credentialsFile = "/home/sudhanshu/.cloudflared/89889c44-3d02-4b7e-830e-40ead7cfc02c.json";
+          ingress = {
+            "test.eltros.in" = "http://localhost:8080";
+          };
+          default = "http_status:404";
+        };
+      };
+    };
     
   };
 
@@ -94,6 +107,24 @@ in
     gptfdisk
     htop
     pciutils
+
+    wineWowPackages.stable
+
+    wine
+
+    (wine.override { wineBuild = "wine64"; })
+
+    # support 64-bit only
+    wine64
+
+    # wine-staging (version with experimental features)
+    wineWowPackages.staging
+
+    # winetricks (all versions)
+    winetricks
+
+    # native wayland support (unstable)
+    wineWowPackages.waylandFull
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";

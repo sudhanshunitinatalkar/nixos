@@ -23,6 +23,7 @@ in
         sops
         pciutils
         mosquitto
+        python3
   
         cloudflared
         unstable.arduino-ide
@@ -35,6 +36,9 @@ in
         unstable.fragments
         unstable.vscode
         rpi-imager
+        unstable.obs-studio
+        kdePackages.isoimagewriter
+         
       
     ];
 
