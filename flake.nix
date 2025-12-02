@@ -24,8 +24,6 @@
         ./host/configuration.nix
         ./modules/hardware/nvidia.nix
         ./modules/gnome.nix
-        ./modules/wine.nix
-        ./modules/nextion/nextion-run.nix
         ({ config, pkgs, ... }: 
         {
           nixpkgs.config.allowUnfree = true;
