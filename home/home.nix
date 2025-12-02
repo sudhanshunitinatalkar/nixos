@@ -1,12 +1,5 @@
 { pkgs, inputs, ... }:
 
-let
-  unstable = import inputs.nixpkgs-unstable 
-  {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
-in
 {
     home.packages = with pkgs; 
     [
@@ -26,18 +19,18 @@ in
         python3
   
         cloudflared
-        unstable.arduino-ide
-        unstable.prusa-slicer
-        unstable.libreoffice-fresh
-        unstable.telegram-desktop
-        unstable.gimp
-        unstable.inkscape
-        unstable.vlc
-        unstable.fragments
-        unstable.vscode
+        arduino-ide
+        prusa-slicer
+        libreoffice-fresh
+        telegram-desktop
+        gimp
+        inkscape
+        vlc
+        fragments
+        vscode
         rpi-imager
-        unstable.obs-studio
-        kdePackages.isoimagewriter
+        obs-studio
+        
          
       
     ];
