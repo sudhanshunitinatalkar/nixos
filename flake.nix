@@ -30,20 +30,19 @@
           time.timeZone = "Asia/Kolkata";
           system.stateVersion = "25.11";
 
-          users.users.sudhanshu = 
+          users.users.sudha = 
           {
             isNormalUser = true;
             extraGroups = [ "wheel" "dialout" ];
           };
 
-          nix.settings.trusted-users = [ "sudhanshu" ];
         
           home-manager = 
           {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            users.sudhanshu = {
+            users.sudha = {
                imports = [ ./home/home.nix ];
                home.stateVersion = "25.11";
             };
