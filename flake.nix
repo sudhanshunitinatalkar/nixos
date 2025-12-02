@@ -52,17 +52,5 @@
         })
       ];
     };
-    homeConfigurations."sudha" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [ 
-        ./home/notnixhome.nix 
-        ({ pkgs, ... }: {
-          nixpkgs.config.allowUnfree = true;
-          home.username = "sudha";
-          home.homeDirectory = "/home/sudha";
-          home.stateVersion = "25.11";
-        })
-        ];
-    };
   };
 }
