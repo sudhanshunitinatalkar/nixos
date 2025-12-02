@@ -1,13 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
-  unstable = import inputs.nixpkgs-unstable 
-  {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
-in
-
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -77,12 +69,12 @@ in
     {
       enable = true;
       acceleration = "cuda";
-      package = unstable.ollama;
+      package = ollama;
     };
 
 
     cloudflared = {
-      enable = true;
+      enable = false;
       tunnels = {
         "89889c44-3d02-4b7e-830e-40ead7cfc02c" = {
           credentialsFile = "/home/sudhanshu/.cloudflared/89889c44-3d02-4b7e-830e-40ead7cfc02c.json";
