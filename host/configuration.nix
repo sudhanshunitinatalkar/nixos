@@ -69,7 +69,6 @@
     {
       enable = true;
       acceleration = "cuda";
-      package = ollama;
     };
 
 
