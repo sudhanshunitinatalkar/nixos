@@ -75,10 +75,10 @@
     cloudflared = {
       enable = false;
       tunnels = {
-        "89889c44-3d02-4b7e-830e-40ead7cfc02c" = {
-          credentialsFile = "/home/sudhanshu/.cloudflared/89889c44-3d02-4b7e-830e-40ead7cfc02c.json";
+        "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
+          credentialsFile = "/home/sudhanshu/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
           ingress = {
-            "test.eltros.in" = "http://localhost:8080";
+            "diag.eltros.in" = "http://localhost:5000";
           };
           default = "http_status:404";
         };
