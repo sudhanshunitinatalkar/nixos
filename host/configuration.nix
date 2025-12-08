@@ -73,7 +73,7 @@
 
 
     cloudflared = {
-      enable = false;
+      enable = true;
       tunnels = {
         "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
           credentialsFile = "/home/sudhanshu/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
