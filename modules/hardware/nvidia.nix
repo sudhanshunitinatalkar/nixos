@@ -15,7 +15,7 @@
     modesetting.enable = true;
 
     # Use the opensource NVIDIA driver.
-    open = true;
+    open = false;
 
     # Power management is essential for laptops to turn off the dGPU when not in use.
     powerManagement.enable = true;

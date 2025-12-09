@@ -3,17 +3,17 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  nix.settings = 
-  {
-    substituters = 
-    [
-      "https://cuda-maintainers.cachix.org"
-    ];
-    trusted-public-keys = 
-    [
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-    ];
-  };
+  # nix.settings = 
+  # {
+  #   substituters = 
+  #   [
+  #     "https://cuda-maintainers.cachix.org"
+  #   ];
+  #   trusted-public-keys = 
+  #   [
+  #     "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+  #   ];
+  # };
 
   imports =
   [ 
@@ -22,7 +22,7 @@
 
   boot = 
   {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = 
     {
       systemd-boot.enable = true;
@@ -65,18 +65,17 @@
       pulse.enable = true;
     };
 
-    ollama =
-    {
-      enable = false;
-      acceleration = "cuda";
-    };
+    # ollama =
+    # {
+    #   enable = false;
+    # };
 
 
     cloudflared = {
       enable = true;
       tunnels = {
         "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
-          credentialsFile = "/home/sudhanshu/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
+          credentialsFile = "/home/sudha/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
           ingress = {
             "diag.eltros.in" = "http://localhost:5000";
           };
