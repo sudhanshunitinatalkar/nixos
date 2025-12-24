@@ -30,9 +30,6 @@
         vscode
         rpi-imager
         obs-studio
-        
-         
-      
     ];
 
 

@@ -3,18 +3,6 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # nix.settings = 
-  # {
-  #   substituters = 
-  #   [
-  #     "https://cuda-maintainers.cachix.org"
-  #   ];
-  #   trusted-public-keys = 
-  #   [
-  #     "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-  #   ];
-  # };
-
   imports =
   [ 
     ./hardware-configuration.nix
@@ -65,10 +53,10 @@
       pulse.enable = true;
     };
 
-    # ollama =
-    # {
-    #   enable = false;
-    # };
+    ollama =
+    {
+      enable = false;
+    };
 
 
     cloudflared = {
@@ -77,7 +65,7 @@
         "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
           credentialsFile = "/home/sudha/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
           ingress = {
-            "diag.eltros.in" = "http://localhost:5000";
+            "test.eltros.in" = "http://localhost:5000";
           };
           default = "http_status:404";
         };
