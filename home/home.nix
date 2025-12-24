@@ -30,6 +30,8 @@
         vscode
         rpi-imager
         obs-studio
+        freecad
+        kicad
     ];
 
 
