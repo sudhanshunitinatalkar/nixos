@@ -28,6 +28,7 @@
           nixpkgs.config.allowUnfree = true;
 
           time.timeZone = "Asia/Kolkata";
+          time.hardwareClockInLocalTime = true;
           system.stateVersion = "25.11";
 
           users.users.sudha = 

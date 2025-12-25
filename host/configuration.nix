@@ -59,18 +59,18 @@
     };
 
 
-    cloudflared = {
-      enable = true;
-      tunnels = {
-        "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
-          credentialsFile = "/home/sudha/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
-          ingress = {
-            "test.eltros.in" = "http://localhost:5000";
-          };
-          default = "http_status:404";
-        };
-      };
-    };
+    # cloudflared = {
+    #   enable = true;
+    #   tunnels = {
+    #     "38eb42ff-0229-46cf-8cee-7b8a501f4f38" = {
+    #       credentialsFile = "/home/sudha/.cloudflared/38eb42ff-0229-46cf-8cee-7b8a501f4f38.json";
+    #       ingress = {
+    #         "test.eltros.in" = "http://localhost:5000";
+    #       };
+    #       default = "http_status:404";
+    #     };
+    #   };
+    # };
     
   };
 
