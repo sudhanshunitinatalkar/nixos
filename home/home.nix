@@ -27,7 +27,7 @@
         inkscape
         vlc
         fragments
-        vscode
+        zed-editor
         rpi-imager
         obs-studio
         freecad
