@@ -4,24 +4,24 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports =
-  [ 
+  [
     ./hardware-configuration.nix
   ];
 
-  boot = 
+  boot =
   {
-    kernelPackages = pkgs.linuxPackages;
-    loader = 
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader =
     {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    
+
   };
 
   hardware.bluetooth.enable = true;
 
-  networking = 
+  networking =
   {
     hostName = "cosmos";
     networkmanager.enable = true;
@@ -29,25 +29,25 @@
     # firewall.allowedTCPPorts = [ ];
     # firewall.allowedUDPPorts = [ ];
   };
-  
-  programs = 
+
+  programs =
   {
     firefox.enable = true;
     mtr.enable = true;
-    gnupg.agent = 
+    gnupg.agent =
     {
       enable = true;
       enableSSHSupport = true;
     };
   };
 
-  services = 
+  services =
   {
     printing.enable = true;
     libinput.enable = true;
     openssh.enable = true;
 
-    pipewire = 
+    pipewire =
     {
       enable = true;
       pulse.enable = true;
@@ -71,10 +71,10 @@
     #     };
     #   };
     # };
-    
+
   };
 
-  environment.systemPackages = with pkgs; 
+  environment.systemPackages = with pkgs;
   [
     tree
     util-linux
@@ -88,7 +88,7 @@
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = 
+  console =
   {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -96,4 +96,3 @@
   };
 
 }
-
