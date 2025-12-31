@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
     home.packages = with pkgs; 
@@ -17,6 +17,8 @@
         pciutils
         mosquitto
         python3
+        nixd
+        nil
   
         cloudflared
         arduino-ide

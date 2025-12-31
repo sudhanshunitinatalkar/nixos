@@ -23,7 +23,7 @@
         ./host/configuration.nix
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
-        ({ config, pkgs, ... }: 
+        
         {
           nixpkgs.config.allowUnfree = true;
 
@@ -34,7 +34,7 @@
           users.users.sudha = 
           {
             isNormalUser = true;
-            extraGroups = [ "wheel" "dialout" ];
+            extraGroups = [ "wheel" "dialout" "docker"];
           };
 
         
@@ -48,7 +48,7 @@
                home.stateVersion = "25.11";
             };
           };
-        })
+        }
       ];
     };
   };
