@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem 
     {

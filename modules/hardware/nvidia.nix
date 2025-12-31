@@ -1,5 +1,5 @@
 # nvidia.nix
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   # This option was renamed.
