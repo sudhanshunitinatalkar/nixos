@@ -64,9 +64,9 @@
           authentication = pkgs.lib.mkOverride 10 ''
             #type database  DBuser  auth-method
             local all       all     trust
-            # # Allow ThingsBoard (and other apps) to connect via TCP/IP
-            # host  all       all     127.0.0.1/32   scram-sha-256
-            # host  all       all     ::1/128        scram-sha-256
+            # Allow ThingsBoard (and other apps) to connect via TCP/IP
+            host  all       all     127.0.0.1/32   scram-sha-256
+            host  all       all     ::1/128        scram-sha-256
           '';
         };
 
