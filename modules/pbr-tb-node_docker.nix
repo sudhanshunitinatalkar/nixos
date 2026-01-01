@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# docker run -it --rm --network=host   -v tb-node-data:/data   -v tb-node-logs:/var/log/thingsboard   -e SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/thingsboard"   -e SPRING_DATASOURCE_USERNAME=postgres   -e SPRING_DATASOURCE_PASSWORD=postgres   -e INSTALL_TB=true   -e LOAD_DEMO=true   sudhanshuatalkar/pbr-tb-node:latest
 {
   virtualisation.docker.enable = true;
 
@@ -38,8 +39,6 @@
           DATABASE_ENTITIES_TYPE = "sql";
           JAVA_OPTS = "-Xms1G -Xmx2G"; 
         };
-        
-        dependsOn = [ "pbr-postgres" ];
       };
     };
   };

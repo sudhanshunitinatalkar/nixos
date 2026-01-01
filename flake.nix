@@ -22,7 +22,7 @@
         ./host/configuration.nix
         ./modules/hardware/nvidia.nix
         ./modules/plasma.nix
-        
+        ./modules/pbr-tb-node_docker.nix
         {
           nixpkgs.config.allowUnfree = true;
 
