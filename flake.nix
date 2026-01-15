@@ -42,7 +42,7 @@
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
             users.sudha = {
-               imports = [ ./home/home.nix ];
+               imports = [ ./home/sudha.nix ];
                home.stateVersion = "25.11";
             };
           };
