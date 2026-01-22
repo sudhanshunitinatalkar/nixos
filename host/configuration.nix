@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports =
@@ -9,6 +11,7 @@
   ];
 
   boot =
+  
   {
     kernelPackages = pkgs.linuxPackages_latest;
     loader =
@@ -69,6 +72,12 @@
             host  all       all     ::1/128        scram-sha-256
           '';
         };
+        
+        avahi = {
+            enable = true;
+            nssmdns4 = true; # <--- THIS IS THE KEY
+            openFirewall = true; # Optional, but helps if you have a firewall on the laptop
+          };
 
 
     # cloudflared = {
@@ -109,6 +118,6 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
     #useXkbConfig = true;
-  };
+  };    
 
 }

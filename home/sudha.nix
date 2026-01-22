@@ -34,9 +34,31 @@
         obs-studio
         freecad
         kicad
+        freetube
+        attic-client
+        kdePackages.isoimagewriter
+
     ];
-
-
+    
+    programs.ssh = 
+    {
+      enable = true;
+      enableDefaultConfig = false; 
+      matchBlocks = 
+      {
+        "*" = 
+        {
+          addKeysToAgent = "yes"; 
+        };
+        "pbrserver.eltros.in" = 
+        {
+          user = "pbr";
+          proxyCommand = "cloudflared access ssh --hostname %h";
+        };
+      };
+    };
+    
+    
   programs.git = 
   {
     enable = true;
