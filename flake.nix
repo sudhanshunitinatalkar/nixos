@@ -34,7 +34,7 @@
             isNormalUser = true;
             extraGroups = [ "wheel" "dialout" "docker"];
           };
-
+          nix.settings.trusted-users = [ "root" "sudha" ];
         
           home-manager = 
           {

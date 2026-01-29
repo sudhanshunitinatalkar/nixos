@@ -37,6 +37,8 @@
         freetube
         attic-client
         kdePackages.isoimagewriter
+        scribus
+        cachix
 
     ];
     
