@@ -39,6 +39,7 @@
         kdePackages.isoimagewriter
         scribus
         cachix
+        mqttx
 
     ];
     
@@ -52,7 +53,7 @@
         {
           addKeysToAgent = "yes"; 
         };
-        "pbrserver.eltros.in" = 
+        "pbrlab.eltros.in" = 
         {
           user = "pbr";
           proxyCommand = "cloudflared access ssh --hostname %h";
