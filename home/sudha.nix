@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  
+  imports =
+  [
+    ./home.nix
+  ];
     home.packages = with pkgs;
     [
         tree
@@ -59,5 +64,6 @@
     settings.user.name = "sudhanshunitinatalkar";
     settings.user.email = "atalkarsudhanshu@proton.me";
   };
+  
 
 }
