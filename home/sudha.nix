@@ -4,7 +4,8 @@
   
   imports =
   [
-    ./home.nix
+    ./gnome.nix
+    ./ssh.nix
   ];
     home.packages = with pkgs;
     [
@@ -37,26 +38,7 @@
         scribus
         cachix
         mqttx
-    ];
-
-    programs.ssh =
-    {
-      enable = true;
-      enableDefaultConfig = false;
-      matchBlocks =
-      {
-        "*" =
-        {
-          addKeysToAgent = "yes";
-        };
-        "pbrlab.eltros.in" =
-        {
-          user = "pbr";
-          proxyCommand = "cloudflared access ssh --hostname %h";
-        };
-      };
-    };
-
+    ];   
 
   programs.git =
   {

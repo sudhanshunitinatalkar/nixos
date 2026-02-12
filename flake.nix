@@ -20,8 +20,8 @@
       [
         home-manager.nixosModules.home-manager
         ./host/configuration.nix
-        ./modules/hardware/nvidia.nix
-        ./modules/gnome.nix
+        ./modules/nvidia
+        ./modules/gnome
         {
           nixpkgs.config.allowUnfree = true;
 
