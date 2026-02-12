@@ -35,9 +35,7 @@
         fragments
         zed-editor
         obs-studio
-        scribus
         cachix
-        mqttx
     ];   
 
   programs.git =
