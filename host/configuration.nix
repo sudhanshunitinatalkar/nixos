@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   
@@ -13,7 +13,7 @@
   boot =
   
   {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages;
     loader =
     {
       systemd-boot.enable = true;
@@ -32,6 +32,7 @@
     # firewall.allowedTCPPorts = [ ];
     # firewall.allowedUDPPorts = [ ];
   };
+
 
   programs =
   {
@@ -110,6 +111,7 @@
     gptfdisk
     htop
     pciutils
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
