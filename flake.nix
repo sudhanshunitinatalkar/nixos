@@ -35,7 +35,8 @@
             extraGroups = [ "wheel" "dialout" "docker"];
           };
           nix.settings.trusted-users = [ "root" "sudha" ];
-        
+          
+          home-manager.backupFileExtension = "backup";
           home-manager = 
           {
             useGlobalPkgs = true;
