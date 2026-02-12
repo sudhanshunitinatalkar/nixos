@@ -19,7 +19,7 @@
       options = [ "subvol=@root" ];
     };
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/16296b96-9968-48c9-9109-bd6d458d8743";
+  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/3a7a671b-2aa0-4529-9a9d-e63e80f0bc2d";
 
   fileSystems."/home" =
     { device = "/dev/mapper/enc";
@@ -40,14 +40,12 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/326E-03AF";
+    { device = "/dev/disk/by-uuid/4CC1-46DD";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
- 
-  swapDevices = [
-    { device = "/swap/swapfile"; }
-  ];
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
