@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-    home.packages = with pkgs; 
+    home.packages = with pkgs;
     [
         tree
         util-linux
@@ -19,50 +19,69 @@
         python3
         nixd
         nil
-  
+        inotify-tools
+
         cloudflared
-        arduino-ide
         prusa-slicer
         libreoffice-fresh
         telegram-desktop
-        gimp
-        inkscape
         vlc
         fragments
         zed-editor
-        rpi-imager
         obs-studio
-        freecad
-        kicad
-        freetube
-        attic-client
-        kdePackages.isoimagewriter
         scribus
         cachix
         mqttx
-
     ];
-    
-    programs.ssh = 
+
+
+    xdg.configFile."monitors.xml".text = ''
+    <monitors version="2">
+      <configuration>
+        <layoutmode>logical</layoutmode>
+        <logicalmonitor>
+          <x>0</x>
+          <y>0</y>
+          <scale>1.25</scale>
+          <primary>yes</primary>
+          <monitor>
+            <monitorspec>
+              <connector>eDP-1</connector>
+              <vendor>LEN</vendor>
+              <product>0x9059</product>
+              <serial>0x00000000</serial>
+            </monitorspec>
+            <mode>
+              <width>1920</width>
+              <height>1080</height>
+              <rate>120.002</rate>
+            </mode>
+          </monitor>
+        </logicalmonitor>
+      </configuration>
+    </monitors>
+  '';
+
+    programs.ssh =
     {
       enable = true;
-      enableDefaultConfig = false; 
-      matchBlocks = 
+      enableDefaultConfig = false;
+      matchBlocks =
       {
-        "*" = 
+        "*" =
         {
-          addKeysToAgent = "yes"; 
+          addKeysToAgent = "yes";
         };
-        "pbrlab.eltros.in" = 
+        "pbrlab.eltros.in" =
         {
           user = "pbr";
           proxyCommand = "cloudflared access ssh --hostname %h";
         };
       };
     };
-    
-    
-  programs.git = 
+
+
+  programs.git =
   {
     enable = true;
     settings.user.name = "sudhanshunitinatalkar";
