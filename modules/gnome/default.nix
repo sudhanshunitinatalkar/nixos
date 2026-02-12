@@ -36,6 +36,7 @@
         gnome-weather
         gnome-contacts
         decibels
+        showtime
     ]);
 
 }
