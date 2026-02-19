@@ -36,6 +36,9 @@
         zed-editor
         obs-studio
         cachix
+        mqttx
+        arduino-ide
+        impression
     ];   
 
   programs.git =

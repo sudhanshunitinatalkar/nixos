@@ -8,6 +8,8 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.caffeine
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.desktop-icons-ng-ding
   ];
   
   dconf = {
@@ -21,6 +23,8 @@
             gnomeExtensions.caffeine.extensionUuid
             gnomeExtensions.blur-my-shell.extensionUuid
             gnomeExtensions.dash-to-dock.extensionUuid
+            gnomeExtensions.clipboard-indicator.extensionUuid
+            gnomeExtensions.desktop-icons-ng-ding.extensionUuid
           ];
         };
       };
