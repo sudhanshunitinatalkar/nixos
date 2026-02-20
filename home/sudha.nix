@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   
@@ -9,6 +9,7 @@
   ];
     home.packages = with pkgs;
     [
+        inputs.openclaw.packages.${pkgs.system}.openclaw
         tree
         util-linux
         vim
@@ -48,5 +49,4 @@
     settings.user.email = "atalkarsudhanshu@proton.me";
   };
   
-
 }

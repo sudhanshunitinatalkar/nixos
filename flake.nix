@@ -13,9 +13,11 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    openclaw.url = "github:openclaw/nix-openclaw";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, zen-browser, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, zen-browser, openclaw, ... }:
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem     {
       system = "x86_64-linux";
@@ -28,6 +30,14 @@
         ./modules/gnome
         {
           nixpkgs.config.allowUnfree = true;
+          
+          # UPDATED OVERLAY BLOCK
+          # In nixos/flake.nix
+          # Use the official overlay to cleanly populate pkgs.openclawPackages.withTools
+          # In flake.nix under nixpkgs.overlays
+          nixpkgs.overlays = [
+            (inputs.openclaw.overlays.default or inputs.openclaw.overlays.openclaw)
+          ];
 
           time.timeZone = "Asia/Kolkata";
           time.hardwareClockInLocalTime = true;
@@ -46,7 +56,10 @@
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
             users.sudha = {
-               imports = [ ./home/sudha.nix ];
+               imports = [ 
+                 ./home/sudha.nix 
+                 openclaw.homeManagerModules.openclaw               
+               ];
                home.stateVersion = "25.11";
             };
           };

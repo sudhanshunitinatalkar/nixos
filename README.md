@@ -138,3 +138,9 @@ sudo pppd /dev/ttyAMA0 115200 \
     lcp-echo-interval 30 \
     connect 'chat -v -t 15 ABORT BUSY ABORT "NO CARRIER" ABORT ERROR "" AT OK-AT-OK "AT+CGDCONT=1,\"IP\",\"jionet\"" OK ATD*99# CONNECT'
 
+
+
+curl -X POST http://127.0.0.1:18789/api/chat \
+     -H "Authorization: Bearer sudhanshu" \
+     -H "Content-Type: application/json" \
+     -d '{"message": "Is the Granite model active?", "user_id": "sudha"}'

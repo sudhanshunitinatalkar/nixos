@@ -59,7 +59,9 @@
 
     ollama =
     {
-      enable = false;
+      enable = true;
+      acceleration = "cuda";
+      loadModels = [ "granite4:3b" ];
     };
     
     postgresql = 
@@ -120,6 +122,7 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
     #useXkbConfig = true;
-  };    
+  };   
+
 
 }
