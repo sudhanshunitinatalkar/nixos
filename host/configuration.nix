@@ -47,6 +47,7 @@
 
   services =
   {
+    tailscale.enable = true;
     printing.enable = true;
     libinput.enable = true;
     openssh.enable = true;
