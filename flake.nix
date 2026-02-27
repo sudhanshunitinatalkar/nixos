@@ -26,7 +26,7 @@
         home-manager.nixosModules.home-manager
         ./host/configuration.nix
         ./modules/nvidia
-        ./modules/kde
+        ./modules/plasma
         {
           nixpkgs.config.allowUnfree = true;
       
