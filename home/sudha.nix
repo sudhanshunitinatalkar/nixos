@@ -40,6 +40,7 @@
         mqttx
         arduino-ide
         impression
+        vscode
     ];   
 
   programs.git =
