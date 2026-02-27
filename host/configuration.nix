@@ -36,7 +36,6 @@
 
   programs =
   {
-    firefox.enable = true;
     mtr.enable = true;
     gnupg.agent =
     {
@@ -81,10 +80,6 @@
     #   };
     # };
 
-  };
-  
-  virtualisation.docker = {
-    enable = true;
   };
 
   environment.systemPackages = with pkgs;

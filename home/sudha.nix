@@ -23,23 +23,16 @@
         sops
         pciutils
         mosquitto
-        python3
         nixd
         nil
-        inotify-tools
 
         cloudflared
         prusa-slicer
         libreoffice-fresh
         telegram-desktop
         vlc
-        fragments
-        zed-editor
         obs-studio
         cachix
-        mqttx
-        arduino-ide
-        impression
         vscode
     ];   
 
