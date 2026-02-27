@@ -14,10 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    openclaw.url = "github:openclaw/nix-openclaw";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, zen-browser, openclaw, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, zen-browser, ... }:
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem     {
       system = "x86_64-linux";
@@ -27,17 +26,10 @@
         home-manager.nixosModules.home-manager
         ./host/configuration.nix
         ./modules/nvidia
-        ./modules/gnome
+        ./modules/kde
         {
           nixpkgs.config.allowUnfree = true;
-          
-          # UPDATED OVERLAY BLOCK
-          # In nixos/flake.nix
-          # Use the official overlay to cleanly populate pkgs.openclawPackages.withTools
-          # In flake.nix under nixpkgs.overlays
-          nixpkgs.overlays = [
-            (inputs.openclaw.overlays.default or inputs.openclaw.overlays.openclaw)
-          ];
+      
 
           time.timeZone = "Asia/Kolkata";
           time.hardwareClockInLocalTime = true;
@@ -50,6 +42,8 @@
           };
           nix.settings.trusted-users = [ "root" "sudha" ];
           
+          home-manager.backupFileExtension = "backup";
+          
           home-manager = 
           {
             useGlobalPkgs = true;
@@ -58,7 +52,6 @@
             users.sudha = {
                imports = [ 
                  ./home/sudha.nix 
-                 openclaw.homeManagerModules.openclaw               
                ];
                home.stateVersion = "25.11";
             };

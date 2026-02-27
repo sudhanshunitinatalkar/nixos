@@ -23,6 +23,8 @@
   };
 
   hardware.bluetooth.enable = true;
+  
+  services.desktopManager.cosmic.enable = true;
 
   networking =
   {
@@ -62,7 +64,10 @@
     {
       enable = true;
       acceleration = "cuda";
-      loadModels = [ "granite4:3b" ];
+      loadModels = [ 
+        "qwen3:0.6b"
+      ];
+      
     };
     
     postgresql = 

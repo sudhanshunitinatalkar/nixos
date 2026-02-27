@@ -144,3 +144,9 @@ curl -X POST http://127.0.0.1:18789/api/chat \
      -H "Authorization: Bearer sudhanshu" \
      -H "Content-Type: application/json" \
      -d '{"message": "Is the Granite model active?", "user_id": "sudha"}'
+     
+     
+     
+     
+     systemctl --user restart openclaw-gateway
+     systemctl --user status openclaw-ollama

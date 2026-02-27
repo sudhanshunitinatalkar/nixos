@@ -2,14 +2,14 @@
 
 {
   
+  
   imports =
   [
-    ./gnome.nix
     ./ssh.nix
   ];
     home.packages = with pkgs;
     [
-        inputs.openclaw.packages.${pkgs.system}.openclaw
+        # inputs.openclaw.packages.${pkgs.system}.openclaw
         tree
         util-linux
         vim
@@ -48,5 +48,7 @@
     settings.user.name = "sudhanshunitinatalkar";
     settings.user.email = "atalkarsudhanshu@proton.me";
   };
+  
+ 
   
 }
