@@ -36,6 +36,7 @@
           obs-studio
           cachix
           vscode
+          kdePackages.isoimagewriter
         ];   
 
         programs.git = {
