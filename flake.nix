@@ -13,10 +13,13 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, zen-browser, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, zen-browser, disko, ... }:
   {
     nixosConfigurations.cosmos = nixpkgs.lib.nixosSystem     {
       system = "x86_64-linux";
@@ -24,38 +27,13 @@
       modules = 
       [
         home-manager.nixosModules.home-manager
-        ./host/configuration.nix
+        disko.nixosModules.disko 
+        ./modules/configuration
+        ./modules/profile
+        ./modules/ssh
         ./modules/nvidia
         ./modules/plasma
-        {
-          nixpkgs.config.allowUnfree = true;
-      
-
-          time.timeZone = "Asia/Kolkata";
-          time.hardwareClockInLocalTime = true;
-          system.stateVersion = "25.11";
-
-          users.users.sudha = 
-          {
-            isNormalUser = true;
-            extraGroups = [ "wheel" "dialout" "docker"];
-          };
-          
-          nix.settings.trusted-users = [ "root" "sudha" ];
-                    
-          home-manager = 
-          {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
-            users.sudha = {
-               imports = [ 
-                 ./home/sudha.nix 
-               ];
-               home.stateVersion = "25.11";
-            };
-          };
-        }
+        # ./modules/disko
       ];
     };
   };
