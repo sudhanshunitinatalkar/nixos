@@ -31,14 +31,9 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      
-      # [THE FIX]: Tell flake-parts we are building for standard Intel/AMD PCs
       systems = [ "x86_64-linux" ];
-
-      # Import all your Dendritic feature modules
       imports = [
         (inputs.import-tree ./modules)
       ];
-      
     };
 }
