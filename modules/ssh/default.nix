@@ -1,23 +1,24 @@
-# modules/ssh/default.nix
-{ ... }:
-
 {
+    flake.nixosModules.ssh = { ... }:
 
-  services.openssh.enable = true;
+    {
 
-  home-manager.users.sudha = {
-    programs.ssh = {
-      enable = true;
-      enableDefaultConfig = false;
-      matchBlocks = {
-        "*" = {
-          addKeysToAgent = "yes";
+        services.openssh.enable = true;
+
+        home-manager.users.sudha = {
+            programs.ssh = {
+            enable = true;
+            enableDefaultConfig = false;
+            matchBlocks = {
+                "*" = {
+                addKeysToAgent = "yes";
+                };
+                "pbrlab.eltros.in" = {
+                user = "pbr";
+                proxyCommand = "cloudflared access ssh --hostname %h";
+                };
+            };
+            };
         };
-        "pbrlab.eltros.in" = {
-          user = "pbr";
-          proxyCommand = "cloudflared access ssh --hostname %h";
-        };
-      };
     };
-  };
 }

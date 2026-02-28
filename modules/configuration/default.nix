@@ -1,83 +1,80 @@
-{ inputs, pkgs, ... }:
-
 {
-  imports = 
-  [
-    ./hardware.nix
-  ];
-
-  nix.settings = 
+  flake.nixosModules.configuration = { inputs, pkgs, ... }:
   {
-    experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = [ "root" "sudha" ];
-  };
-  system.stateVersion = "25.11";
-  nixpkgs.config.allowUnfree = true;
 
-  boot =
-  {
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
-    kernelPackages = pkgs.linuxPackages;
-    loader =
+    nix.settings = 
     {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "sudha" ];
+    };
+    system.stateVersion = "25.11";
+    nixpkgs.config.allowUnfree = true;
+
+    boot =
+    {
+      binfmt.emulatedSystems = [ "aarch64-linux" ];
+      kernelPackages = pkgs.linuxPackages;
+      loader =
+      {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+
     };
 
-  };
+    hardware.bluetooth.enable = true;
 
-  hardware.bluetooth.enable = true;
-
-  networking =
-  {
-    hostName = "cosmos";
-    networkmanager.enable = true;
-    firewall.enable = false;
-    # firewall.allowedTCPPorts = [ ];
-    # firewall.allowedUDPPorts = [ ];
-  };
-
-  users.users.sudha = 
-  {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "dialout" "docker"];
-  };
-
-  time = {
-    timeZone = "Asia/Kolkata";
-    hardwareClockInLocalTime = true;
-  };
-  
-  services =
-  {
-    printing.enable = true;
-    openssh.enable = true;
-    pipewire =
+    networking =
     {
-      enable = true;
-      pulse.enable = true;
+      hostName = "cosmos";
+      networkmanager.enable = true;
+      firewall.enable = false;
+      # firewall.allowedTCPPorts = [ ];
+      # firewall.allowedUDPPorts = [ ];
     };
+
+    users.users.sudha = 
+    {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "dialout" "docker"];
+    };
+
+    time = {
+      timeZone = "Asia/Kolkata";
+      hardwareClockInLocalTime = true;
+    };
+    
+    services =
+    {
+      printing.enable = true;
+      pipewire =
+      {
+        enable = true;
+        pulse.enable = true;
+      };
+    };
+
+    environment.systemPackages = with pkgs;
+    [
+      tree
+      util-linux
+      vim
+      wget
+      curl
+      git
+      gptfdisk
+      htop
+      pciutils
+    ];
+
+    programs.firefox.enable = true;
+
+    i18n.defaultLocale = "en_US.UTF-8";
+    console =
+    {
+      font = "Lat2-Terminus16";
+      keyMap = "us";
+    };   
+
   };
-
-  environment.systemPackages = with pkgs;
-  [
-    tree
-    util-linux
-    vim
-    wget
-    curl
-    git
-    gptfdisk
-    htop
-    pciutils
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  console =
-  {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };   
-
 }
