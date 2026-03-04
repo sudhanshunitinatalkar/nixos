@@ -37,6 +37,9 @@
           cachix
           vscode
           kdePackages.isoimagewriter
+          arduino-ide
+          python3
+          stm32cubemx
         ];   
 
         programs.git = {
