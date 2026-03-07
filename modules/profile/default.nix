@@ -36,9 +36,7 @@
           obs-studio
           cachix
           vscode
-          arduino-ide
           python3
-          stm32cubemx
         ];   
 
         programs.git = {
