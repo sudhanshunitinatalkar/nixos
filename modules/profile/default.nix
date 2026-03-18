@@ -7,6 +7,7 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = { inherit inputs; };
+      backupFileExtension = "backup";
       
       users.sudha = {
         home.stateVersion = "25.11";
@@ -37,6 +38,12 @@
           cachix
           vscode
           python3
+          stm32cubemx
+          veloren
+          pioneer
+          screen
+          minicom
+          freecad
         ];   
 
         programs.git = {

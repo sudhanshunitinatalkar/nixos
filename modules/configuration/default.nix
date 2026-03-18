@@ -13,7 +13,7 @@
     boot =
     {
       binfmt.emulatedSystems = [ "aarch64-linux" ];
-      kernelPackages = pkgs.linuxPackages;
+      kernelPackages = pkgs.linuxPackages_latest;
       loader =
       {
         systemd-boot.enable = true;
@@ -47,6 +47,11 @@
     services =
     {
       printing.enable = true;
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-cuda;
+      };
+
       pipewire =
       {
         enable = true;
@@ -70,9 +75,8 @@
     i18n.defaultLocale = "en_US.UTF-8";
     console =
     {
-      font = "Lat2-Terminus16";
       keyMap = "us";
-    };   
+    }; 
 
   };
 }

@@ -6,7 +6,7 @@
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
 
-    # Load drivers for both AMD iGPU and NVIDIA dGPU.
+    # Load drivers for both AMD iGPU and NVIDIA dGPU.sduo 
     services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
     hardware.nvidia =
@@ -15,7 +15,7 @@
       modesetting.enable = true;
 
       # Use the opensource NVIDIA driver.
-      open = false;
+      open = true;
 
       # Power management is essential for laptops to turn off the dGPU when not in use.
       powerManagement.enable = true;
@@ -27,7 +27,7 @@
       nvidiaSettings = true;
 
       # Select the latest stable driver.
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
 
       # This is the most important section for your laptop!
       prime =
