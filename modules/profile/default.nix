@@ -39,9 +39,6 @@
           vscode
           python3
           stm32cubemx
-          veloren
-          pioneer
-          screen
           minicom
           freecad
         ];   
