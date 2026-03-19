@@ -58,6 +58,7 @@
         enable = true;
         pulse.enable = true;
       };
+      services.timesyncd.enable = true;
     };
 
     environment.systemPackages = with pkgs;
