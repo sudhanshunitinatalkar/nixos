@@ -14,12 +14,34 @@
     {
       binfmt.emulatedSystems = [ "aarch64-linux" ];
       kernelPackages = pkgs.linuxPackages_latest;
+      
       loader =
       {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
       loader.timeout = 0;
+
+      # --- Plymouth & Silent Boot Configuration ---
+      plymouth = {
+        enable = true;
+        theme = "rings";
+        themePackages = with pkgs; [
+          # Installs the specific 'rings' theme from adi1090x's collection
+          (adi1090x-plymouth-themes.override {
+            selected_themes = [ "rings" ];
+          })
+        ];
+      };
+
+      # Enable "Silent boot" so text doesn't interrupt the animation
+      consoleLogLevel = 3;
+      initrd.verbose = false;
+      kernelParams = [
+        "quiet"
+        "udev.log_level=3"
+        "systemd.show_status=auto"
+      ];
     };
 
     hardware.bluetooth.enable = true;
