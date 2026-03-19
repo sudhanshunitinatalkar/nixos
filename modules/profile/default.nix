@@ -41,6 +41,7 @@
           stm32cubemx
           minicom
           freecad
+          impression
         ];   
 
         programs.git = {
