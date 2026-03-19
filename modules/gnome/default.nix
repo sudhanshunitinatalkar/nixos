@@ -1,9 +1,15 @@
 {
-    flake.nixosModules.nvidia = { config, pkgs, ... }:
+    flake.nixosModules.gnome = { config, pkgs, ... }:
 
     {
     services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome = {
+        enable = true;
+        extraGSettingsOverrides = ''
+          [org.gnome.mutter]
+          experimental-features=['scale-monitor-framebuffer']
+        '';
+    };
 
     environment.gnome.excludePackages = (with pkgs; [
         atomix # puzzle game
@@ -21,6 +27,10 @@
         iagno # go game
         tali # poker game
         totem # video player
+        gnome-weather
+        gnome-contacts
+        gnome-maps
+        showtime
         ]);
     };
     

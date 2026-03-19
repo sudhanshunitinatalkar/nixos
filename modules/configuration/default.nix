@@ -20,7 +20,6 @@
         efi.canTouchEfiVariables = true;
       };
       loader.timeout = 0;
-
     };
 
     hardware.bluetooth.enable = true;
@@ -42,7 +41,6 @@
 
     time = {
       timeZone = "Asia/Kolkata";
-      hardwareClockInLocalTime = true;
     };
     
     services =
@@ -58,7 +56,7 @@
         enable = true;
         pulse.enable = true;
       };
-      services.timesyncd.enable = true;
+      timesyncd.enable = true;
     };
 
     environment.systemPackages = with pkgs;

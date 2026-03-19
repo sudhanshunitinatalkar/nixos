@@ -15,14 +15,12 @@ flake.nixosModules.hardware = { config, lib, pkgs, modulesPath, ... }:
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/enc";
+    { device = "/dev/disk/by-uuid/a2ac42a1-95b4-4f4f-a6de-c1d86471c0bd";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/dce27809-0233-4d87-99a7-1fafa2c4ac42";
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2A06-3733";
+    { device = "/dev/disk/by-uuid/DD1E-CB55";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
