@@ -19,6 +19,7 @@
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
+      loader.timeout = 0;
 
     };
 
