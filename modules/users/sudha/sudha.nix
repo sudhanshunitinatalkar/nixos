@@ -48,5 +48,35 @@
         email = "atalkarsudhanshu@proton.me";
       };
     };
+
+    programs.plasma = {
+      enable = true;
+      
+      # Dark Mode setup
+      workspace = {
+        lookAndFeel = "org.kde.breezedark.desktop";
+        colorScheme = "BreezeDark";
+      };
+
+      # Natural scrolling for the trackpad
+      input.touchpads = [
+        {
+          enable = true;
+          name = "SYNA0001:00 06CB:CE78 Touchpad";
+          vendorId = "06cb"; # 1739 in hex
+          productId = "ce78"; # 52856 in hex
+          naturalScroll = true;
+        }
+      ];
+
+      # Disable Session Restore
+      session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+
+      # Magic Lamp animation for window minimize
+      kwin.effects.minimization.animation = "magiclamp";
+
+      # Write Xwayland scaling direct to kwinrc (120%)
+      configFile.kwinrc.Xwayland.Scale = 1.2;
+    };
   };
 }

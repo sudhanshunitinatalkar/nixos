@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.plasma = { pkgs, ... }:
+  flake.nixosModules.plasma = { pkgs, inputs, ... }:
 
   {
   services = {
@@ -36,4 +36,9 @@
       NIXOS_OZONE_WL = "1";
     };
   };
+
+  flake.homeModules.plasma = { pkgs, ... }:
+  {
+
+  }
 }

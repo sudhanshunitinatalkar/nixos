@@ -15,3 +15,22 @@ ssh-keygen -t ed25519 -C "<atalkarsudhanshu@proton.me>"
 home-manager switch --flake github:sudhanshunitinatalkar/nixos#sudha
 sudo nixos-rebuild switch --flake github:sudhanshunitinatalkar/nixos#cosmoslaptop
 nix run github:nix-community/home-manager -- switch --flake github:sudhanshunitinatalkar/nixos#sudha
+
+## plasma-manager
+
+nix run github:nix-community/plasma-manager
+
+## command to print file content of this project
+
+```bash
+find . -type f -not -path '*/\.*' -not -name 'flake.lock' -print0 \
+  | while IFS= read -r -d '' file; do
+      echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo "┃  $file"
+      echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo ""
+      cat "$file"
+      echo ""
+      echo ""
+    done
+```
