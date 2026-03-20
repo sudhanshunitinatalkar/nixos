@@ -11,10 +11,34 @@
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-      tree util-linux vim wget curl git gptfdisk htop fastfetch
-      android-tools sops pciutils mosquitto nixd nil
-      cloudflared prusa-slicer libreoffice-fresh telegram-desktop
-      vlc obs-studio cachix vscode python3 stm32cubemx minicom freecad impression
+      tree 
+      util-linux 
+      vim 
+      wget 
+      curl 
+      git 
+      gptfdisk 
+      htop 
+      fastfetch
+      android-tools 
+      sops 
+      pciutils 
+      mosquitto 
+      nixd 
+      nil
+      cloudflared 
+      prusa-slicer 
+      libreoffice-fresh 
+      telegram-desktop
+      vlc 
+      obs-studio 
+      cachix 
+      vscode 
+      python3 
+      stm32cubemx 
+      minicom 
+      freecad 
+      impression
     ];
 
     programs.git = {
