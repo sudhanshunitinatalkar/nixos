@@ -1,24 +1,18 @@
 {
-    flake.nixosModules.ssh = { ... }:
-
-    {
-
-        services.openssh.enable = true;
-
-        home-manager.users.sudha = {
-            programs.ssh = {
-            enable = true;
-            enableDefaultConfig = false;
-            matchBlocks = {
-                "*" = {
-                addKeysToAgent = "yes";
-                };
-                "pbrlab.eltros.in" = {
-                user = "pbr";
-                proxyCommand = "cloudflared access ssh --hostname %h";
-                };
-            };
-            };
+  flake.homeModules.ssh = { ... }: 
+  {
+    programs.ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      matchBlocks = {
+        "*" = {
+          addKeysToAgent = "yes";
         };
+        "pbrlab.eltros.in" = {
+          user = "pbr";
+          proxyCommand = "cloudflared access ssh --hostname %h";
+        };
+      };
     };
+  };
 }

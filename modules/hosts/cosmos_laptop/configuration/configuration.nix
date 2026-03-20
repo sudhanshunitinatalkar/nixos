@@ -1,7 +1,6 @@
 {
-  flake.nixosModules.configuration = { inputs, pkgs, ... }:
+  flake.nixosModules.cosmos_laptop = { inputs, pkgs, ... }:
   {
-
     nix.settings = 
     {
       experimental-features = [ "nix-command" "flakes" ];
@@ -48,7 +47,7 @@
 
     networking =
     {
-      hostName = "cosmos";
+      hostName = "cosmos_laptop";
       networkmanager.enable = true;
       firewall.enable = false;
       # firewall.allowedTCPPorts = [ ];
@@ -79,6 +78,7 @@
         pulse.enable = true;
       };
       timesyncd.enable = true;
+      openssh.enable = true;
     };
 
     environment.systemPackages = with pkgs;
