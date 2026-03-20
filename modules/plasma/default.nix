@@ -14,7 +14,6 @@
     [
       # KDE
       kdePackages.plasma-browser-integration
-      kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
       kdePackages.kcalc # Calculator
       kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
       kdePackages.kclock # Clock app
@@ -27,11 +26,14 @@
       kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
       # Non-KDE graphical packages
       hardinfo2 # System information and benchmarks for Linux systems
-      vlc # Cross-platform media player and streaming server
       wayland-utils # Wayland utilities
       wl-clipboard # Command-line copy/paste utilities for Wayland
       kdePackages.isoimagewriter
       kdePackages.filelight
     ];
+
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
   };
 }
