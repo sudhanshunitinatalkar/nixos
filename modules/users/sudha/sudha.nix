@@ -51,6 +51,7 @@
 
     programs.plasma = {
       enable = true;
+      overrideConfig = true;
       
       # Dark Mode setup
       workspace = {
