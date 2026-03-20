@@ -36,9 +36,4 @@
       NIXOS_OZONE_WL = "1";
     };
   };
-
-  flake.homeModules.plasma = { pkgs, ... }:
-  {
-
-  }
 }

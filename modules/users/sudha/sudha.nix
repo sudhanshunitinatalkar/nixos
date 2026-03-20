@@ -77,6 +77,38 @@
 
       # Write Xwayland scaling direct to kwinrc (120%)
       configFile.kwinrc.Xwayland.Scale = 1.2;
+
+      panels = [
+        {
+          location = "bottom";
+          widgets = [
+            # The application launcher (start menu)
+            "org.kde.plasma.kickoff"
+            # Virtual desktop pager
+            "org.kde.plasma.pager"
+            
+            # The taskbar / icon tasks widget
+            {
+              iconTasks = {
+                launchers = [
+                  "applications:org.kde.konsole.desktop"             # Terminal
+                  "applications:org.kde.plasma-systemmonitor.desktop" # System Monitor
+                  "applications:code.desktop"                        # VSCode
+                ];
+              };
+            }
+            
+            # Separator pushes the following widgets to the right
+            "org.kde.plasma.marginsseparator"
+            # System tray (wifi, bluetooth, volume, etc.)
+            "org.kde.plasma.systemtray"
+            # Clock
+            "org.kde.plasma.digitalclock"
+            # Show desktop button
+            "org.kde.plasma.showdesktop"
+          ];
+        }
+      ];
     };
   };
 }

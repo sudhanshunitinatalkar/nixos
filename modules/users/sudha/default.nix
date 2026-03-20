@@ -9,7 +9,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     modules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
+      inputs.plasma-manager.homeModules.plasma-manager
       config.flake.homeModules.sudha
       config.flake.homeModules.ssh
       config.flake.homeModules.zen-browser
