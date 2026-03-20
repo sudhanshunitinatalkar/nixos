@@ -150,3 +150,16 @@ curl -X POST http://127.0.0.1:18789/api/chat \
      
      systemctl --user restart openclaw-gateway
      systemctl --user status openclaw-ollama
+
+
+
+     find . -type f -not -path '*/\.*' -not -name 'flake.lock' -print0 \
+  | while IFS= read -r -d '' file; do
+      echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo "┃  $file"
+      echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      echo ""
+      cat "$file"
+      echo ""
+      echo ""
+    done

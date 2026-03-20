@@ -29,11 +29,15 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];   # ← better than empty list
-
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        # "x86_64-darwin"
+        # "aarch64-darwin"
+      ];
       imports = [
         (inputs.import-tree ./modules)
-        inputs.home-manager.flakeModules.home-manager   # ← THIS IS THE FIX
+        inputs.home-manager.flakeModules.home-manager   
       ];
     };
 }

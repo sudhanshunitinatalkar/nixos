@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.cosmos_laptop = { inputs, pkgs, ... }:
+  flake.nixosModules.cosmoslaptop = { inputs, pkgs, ... }:
   {
     nix.settings = 
     {
@@ -47,7 +47,7 @@
 
     networking =
     {
-      hostName = "cosmos_laptop";
+      hostName = "cosmoslaptop";
       networkmanager.enable = true;
       firewall.enable = false;
       # firewall.allowedTCPPorts = [ ];
