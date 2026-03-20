@@ -18,28 +18,33 @@
       {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
-      };
-      loader.timeout = 0;
-
-      # --- Plymouth & Silent Boot Configuration ---
-      plymouth = {
-        enable = true;
-        theme = "rings";
-        themePackages = with pkgs; [
-          # Installs the specific 'rings' theme from adi1090x's collection
-          (adi1090x-plymouth-themes.override {
-            selected_themes = [ "rings" ];
-          })
-        ];
+        timeout = 0;
       };
 
-      # Enable "Silent boot" so text doesn't interrupt the animation
-      consoleLogLevel = 3;
+      initrd = {
+        # 1. Enable systemd in initrd for a much faster, modern boot sequence
+        systemd.enable = true; 
+        
+        # 2. Force the AMD driver to load at the absolute earliest moment
+        kernelModules = [ "amdgpu" ];
+        availableKernelModules = [ "amdgpu" ];
+      };
+
+      # Silent boot and speed parameters
+      consoleLogLevel = 0; # Set to 0 to suppress almost all kernel text
       initrd.verbose = false;
+      
       kernelParams = [
         "quiet"
+        "splash"           # Explicitly trigger the splash screen
+        "boot.shell_on_fail"
+        "loglevel=3"
+        "rd.systemd.show_status=false"
+        "rd.udev.log_level=3"
         "udev.log_level=3"
-        "systemd.show_status=auto"
+        "fbcon=nodefer"    # Prevents delay in framebuffer initialization
+        "reboot=pci"       # Your Lenovo reboot fix
+        "vt.global_cursor_default=0" # Hides the blinking cursor during boot
       ];
     };
 
@@ -58,6 +63,7 @@
     {
       isNormalUser = true;
       extraGroups = [ "wheel" "dialout" "docker"];
+      
     };
 
     time = {

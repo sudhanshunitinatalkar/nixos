@@ -13,6 +13,7 @@
       config.flake.homeModules.sudha
       config.flake.homeModules.ssh
       config.flake.homeModules.zen-browser
+      config.flake.homeModules.plasma
     ];
   };
 }

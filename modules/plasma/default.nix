@@ -30,10 +30,109 @@
       wl-clipboard # Command-line copy/paste utilities for Wayland
       kdePackages.isoimagewriter
       kdePackages.filelight
+      kdePackages.sddm-kcm
     ];
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
+    };
+  };
+
+  flake.homeModules.plasma = { inputs, ... }: {
+    # Import plasma-manager locally to this module
+    imports = [
+      inputs.plasma-manager.homeModules.plasma-manager
+    ];
+    programs.plasma = {
+      enable = true;
+      overrideConfig = true;
+      
+      # Dark Mode setup
+      workspace = {
+        theme = "breeze-dark";      # Sets the Plasma Desktop/Panel theme
+        colorScheme = "BreezeDark"; # Sets the Application colors
+
+        # Disable launch feedback
+        cursor = {
+          cursorFeedback = "None";
+          taskManagerFeedback = false;
+        };
+        # Disable splash screen
+        splashScreen.theme = "None";
+
+        wallpaper = ./gargantua-black-5200x3250-9621.jpg;
+      };
+
+      kscreenlocker.appearance.wallpaper = ./gargantua-black-5200x3250-9621.jpg;
+
+       
+      # Natural scrolling for the trackpad
+      input.touchpads = [
+        {
+          enable = true;
+          name = "SYNA0001:00 06CB:CE78 Touchpad";
+          vendorId = "06cb"; # 1739 in hex
+          productId = "ce78"; # 52856 in hex
+          naturalScroll = true;
+        }
+      ];
+
+      # Disable Session Restore
+      session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+
+      # Magic Lamp animation for window minimize
+      kwin.effects.minimization.animation = "magiclamp";
+
+      # Write Xwayland scaling direct to kwinrc (120%)
+      configFile.kwinrc.Xwayland.Scale = 1.2;
+
+      panels = [
+        # --- 1. Top Panel (Status Bar) ---
+        {
+          location = "top";
+          height = 28;
+          widgets = [
+            "org.kde.plasma.appmenu" 
+            "org.kde.plasma.panelspacer" 
+            {
+              digitalClock = {
+                date = {
+                  position = "besideTime";
+                };
+              };
+            }
+            "org.kde.plasma.panelspacer" 
+            "org.kde.plasma.pager"
+            "org.kde.plasma.systemtray"
+            "org.kde.plasma.showdesktop"
+          ];
+        }
+
+        # --- 2. Bottom Panel (Centered Dock) ---
+        {
+          location = "bottom";
+          height = 54;
+          floating = true;
+          alignment = "center";
+          lengthMode = "fit"; 
+          hiding = "dodgewindows"; 
+          widgets = [
+            "org.kde.plasma.kickoff"
+            {
+              iconTasks = {
+                launchers = [
+                  "applications:org.kde.konsole.desktop"
+                  "applications:org.kde.dolphin.desktop" 
+                  "applications:zen.desktop"             
+                  "applications:code.desktop"                       
+                  "applications:org.kde.plasma-systemmonitor.desktop" 
+                  "applications:systemsettings.desktop"
+                ];
+              };
+            }
+          ];
+        }
+      ];
     };
   };
 }

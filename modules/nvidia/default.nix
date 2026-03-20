@@ -6,6 +6,10 @@
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
 
+    boot.kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=0"
+    ];
+
     # Load drivers for both AMD iGPU and NVIDIA dGPU.sduo 
     services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
