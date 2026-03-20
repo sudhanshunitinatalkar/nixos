@@ -12,5 +12,6 @@ echo 0 | sudo tee /sys/bus/platform/devices/VPC2004:00/conservation_mode
 
 ssh-keygen -t ed25519 -C "<atalkarsudhanshu@proton.me>"
 
-home-manager switch --flake .#sudha
-sudo nixos-rebuild switch --flake
+home-manager switch --flake github:sudhanshunitinatalkar/nixos#sudha
+sudo nixos-rebuild switch --flake github:sudhanshunitinatalkar/nixos#cosmoslaptop
+nix run github:nix-community/home-manager -- switch --flake github:sudhanshunitinatalkar/nixos#sudha
