@@ -31,6 +31,7 @@
       kdePackages.isoimagewriter
       kdePackages.filelight
       kdePackages.sddm-kcm
+      kdePackages.kdeconnect-kde
     ];
 
     environment.sessionVariables = {
