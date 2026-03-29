@@ -39,6 +39,7 @@
       minicom 
       freecad 
       impression
+      rpi-imager
     ];
 
     programs.git = {

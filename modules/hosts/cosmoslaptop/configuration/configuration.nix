@@ -11,6 +11,7 @@
 
     boot =
     {
+      
       binfmt.emulatedSystems = [ "aarch64-linux" ];
       kernelPackages = pkgs.linuxPackages_latest;
       

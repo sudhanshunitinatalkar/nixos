@@ -1,13 +1,23 @@
 {
   flake.nixosModules.plasma = { pkgs, inputs, ... }:
+  let
+    sddm-theme = pkgs.sddm-astronaut.override {
+      themeConfig = {
+        background = "${./gargantua-black-5200x3250-9621.jpg}";
+      };
+    };
+  in
 
   {
   services = {
     desktopManager.plasma6.enable = true;
 
-    displayManager.sddm.enable = true;
-
-    displayManager.sddm.wayland.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "sddm-astronaut-theme";
+      extraPackages = [ sddm-theme ];
+    };
   };
 
   environment.systemPackages = with pkgs;
@@ -32,6 +42,10 @@
       kdePackages.filelight
       kdePackages.sddm-kcm
       kdePackages.kdeconnect-kde
+      (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+        [General]
+        background=${./gargantua-black-5200x3250-9621.jpg}
+      '')
     ];
 
     environment.sessionVariables = {

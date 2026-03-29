@@ -1,0 +1,87 @@
+// ---------------------------------------------------------------------
+// Niri Configuration File
+// Syntax: KDL (https://kdl.dev)
+// ---------------------------------------------------------------------
+
+// --- 1. Startup Applications ---
+// These commands run exactly once when Niri starts.
+spawn-at-startup "ironbar"
+spawn-at-startup "mako"
+// Setting a dark background color for now. 
+// We can link your gargantua wallpaper later using: spawn-at-startup "swaybg" "-i" "/path/to/image.jpg"
+spawn-at-startup "swaybg" "-c" "#11111b" 
+
+// --- 2. Input Devices ---
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+    touchpad {
+        // We are matching the preferences you had in your Plasma config
+        tap
+        natural-scroll
+    }
+}
+
+// --- 3. Output / Display ---
+output "eDP-1" {
+    // eDP-1 is the standard name for built-in laptop displays.
+    // If you need fractional scaling like your Plasma config (1.2), uncomment the next line:
+    scale 1.2
+}
+
+// --- 4. Window Layout & Visuals ---
+layout {
+    // Space between windows and the edge of the screen
+    gaps 12
+
+    // How wide should new windows be? (Half the screen by default)
+    default-column-width { proportion 0.5; }
+
+    // Niri uses a focus ring instead of a border by default
+    focus-ring {
+        width 3
+        active-color "#89b4fa"   // A nice blue for the active window
+        inactive-color "#313244" // A dark grey for inactive windows
+    }
+}
+
+// --- 5. Keybindings ---
+// "Mod" is your Super / Windows key.
+binds {
+    // --- App Launchers ---
+    Mod+Return { spawn "alacritty"; }
+    Mod+D      { spawn "fuzzel"; }
+
+    // --- Window Management ---
+    Mod+Q      { close-window; }
+
+    // --- Navigation (Arrow Keys) ---
+    Mod+Left   { focus-column-left; }
+    Mod+Right  { focus-column-right; }
+    Mod+Up     { focus-window-up; }
+    Mod+Down   { focus-window-down; }
+
+    // --- Navigation (Vim Keys - highly recommended to learn!) ---
+    Mod+H      { focus-column-left; }
+    Mod+L      { focus-column-right; }
+    Mod+K      { focus-window-up; }
+    Mod+J      { focus-window-down; }
+
+    // --- Moving Windows ---
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
+
+    // --- Window Sizing ---
+    Mod+Minus       { set-column-width "-10%"; }
+    Mod+Equal       { set-column-width "+10%"; }
+    Mod+Shift+F     { maximize-column; }
+    Mod+F           { fullscreen-window; }
+
+    // --- System Control ---
+    Mod+Shift+E     { quit; } // Logs you out and returns to SDDM
+}

@@ -1,0 +1,37 @@
+{
+  "position": "top",
+  "height": 40,
+  "margin": {
+    "top": 12,
+    "bottom": 0,
+    "left": 12,
+    "right": 12
+  },
+  "start": [
+    {
+      "type": "niri-workspaces"
+    }
+  ],
+  "center": [
+    {
+      "type": "clock",
+      "format": "%A, %B %d   %I:%M %p"
+    }
+  ],
+  "end": [
+    {
+      "type": "sys_info",
+      "format": [
+        "CPU: {cpu_percent}%",
+        "RAM: {memory_percent}%"
+      ]
+    },
+    {
+      "type": "battery",
+      "format": "{icon}  {percent}%"
+    },
+    {
+      "type": "tray"
+    }
+  ]
+}
