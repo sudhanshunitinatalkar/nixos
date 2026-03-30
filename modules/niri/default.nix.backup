@@ -3,20 +3,16 @@
   # System-Level Configuration (NixOS)
   # --------------------------------------------------------
   flake.nixosModules.niri = { pkgs, ... }: {
-    # Enable the Niri Wayland compositor system-wide.
-    # This automatically adds the Niri session to SDDM.
-
+    programs.niri.enable = true;
 
     services.displayManager.ly = {
       enable = true;
     };
     
-    programs.niri.enable = true;
-
     # Polkit is required for GUI apps to ask for sudo passwords
     security.polkit.enable = true;
 
-    # A fallback polkit authentication agent (GNOME's is very reliable)
+    # A fallback polkit authentication agent
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
@@ -38,18 +34,18 @@
   flake.homeModules.niri = { pkgs, ... }: {
     home.packages = with pkgs; [
       nerd-fonts.fira-code
-      ironbar       # The top status bar
-      fuzzel       # Fast, Wayland-native application launcher
+      waybar       # The standard highly-customizable Wayland bar
+      wofi         # Standard Hyprland ecosystem application launcher
       swaybg       # Super lightweight wallpaper utility
       mako         # Notification daemon
-      wl-clipboard # You already have this, but good to ensure it's here
-      alacritty    # A GPU-accelerated terminal written in Rust
+      wl-clipboard # Clipboard management
+      kitty        # GPU-accelerated terminal
     ];
 
-    # We will let Home Manager manage the directory structure, 
-    # but we will write the config file in the next step.
     xdg.configFile."niri/config.kdl".source = ./config.kdl;
-    xdg.configFile."ironbar/config.json".source = ./ironbar/config.json;
-    xdg.configFile."ironbar/style.css".source = ./ironbar/style.css;
+    
+    # Once you create Waybar configs, you can link them like this:
+    xdg.configFile."waybar/config".source = ./waybar/config;
+    xdg.configFile."waybar/style.css".source = ./waybar/style.css;
   };
 }

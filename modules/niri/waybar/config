@@ -1,0 +1,38 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 0,
+    "modules-left": [
+        "niri/workspaces"
+    ],
+    "modules-center": [
+        "niri/window"
+    ],
+    "modules-right": [
+        "tray",
+        "battery",
+        "clock"
+    ],
+    "niri/workspaces": {
+        "format": "[ {workspace} ]",
+        "disable-scroll": true
+    },
+    "niri/window": {
+        "format": "> {title}",
+        "max-length": 60
+    },
+    "battery": {
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "BAT: {capacity}%",
+        "format-charging": "CHR: {capacity}%",
+        "format-plugged": "PLG: {capacity}%"
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d  %H:%M}",
+        "tooltip": false
+    }
+}

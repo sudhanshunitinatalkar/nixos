@@ -7,9 +7,9 @@
       config.flake.nixosModules.cosmoslaptop
       config.flake.nixosModules.cosmoslaptophardware 
       config.flake.nixosModules.nvidia
-      # config.flake.nixosModules.plasma
+      config.flake.nixosModules.plasma
       config.flake.nixosModules.mac-style-plymouth  
-      config.flake.nixosModules.niri    
+      # config.flake.nixosModules.niri    
     ];
   };
 }
