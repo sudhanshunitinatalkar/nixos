@@ -2,7 +2,7 @@
   # and may be overwritten by future invocations.  Please make changes
   # to /etc/nixos/configuration.nix instead.
 {
-  flake.nixosModules.cosmoslaptophardware = {config, lib, pkgs, modulesPath, ... }:
+  flake.nixosModules.cosmos-laptop-hardware = {config, lib, pkgs, modulesPath, ... }:
 
   {
     imports =

@@ -4,12 +4,9 @@
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
     modules = [
-      config.flake.nixosModules.cosmoslaptop
-      config.flake.nixosModules.cosmoslaptophardware 
-      config.flake.nixosModules.nvidia
-      config.flake.nixosModules.plasma
-      config.flake.nixosModules.mac-style-plymouth  
-      # config.flake.nixosModules.niri    
+      config.flake.nixosModules.cosmos-laptop
+      config.flake.nixosModules.cosmos-laptop-hardware 
+      config.flake.nixosModules.lenovo-ideapad-gaming3-nvidia
     ];
   };
 }

@@ -1,6 +1,5 @@
 {
-  flake.nixosModules.nvidia = { config, ... }:
-
+  flake.nixosModules.lenovo-ideapad-gaming3-nvidia = { config, ... }:
   {
     # This option was renamed.
     hardware.graphics.enable = true;
@@ -46,6 +45,31 @@
         amdgpuBusId = "PCI:5:0:0";
         nvidiaBusId = "PCI:1:0:0";
       };
+    };
+  };
+
+
+  flake.nixosModules.nixos-wsl-nvidia = { config, pkgs, ... }:
+  {
+    # Let WSL pass through the Windows GPU driver into the container.
+    # This replaces ALL manual driver installation — do not set
+    # services.xserver.videoDrivers or hardware.nvidia here.
+    wsl.useWindowsDriver = true;
+
+    # hardware.graphics still needs to be enabled so that
+    # OpenGL/Vulkan userspace libraries are present for apps to link against.
+    hardware.graphics.enable = true;
+
+    # CUDA support — the stub library lets CUDA apps discover the GPU
+    # through the Windows driver passthrough.
+    environment.systemPackages = with pkgs; [
+      cudaPackages.cudatoolkit
+    ];
+
+    # Tell CUDA where to find the paravirtualized driver libs that WSL
+    # mounts at /usr/lib/wsl/lib at runtime.
+    environment.sessionVariables = {
+      LD_LIBRARY_PATH = "/usr/lib/wsl/lib:$LD_LIBRARY_PATH";
     };
   };
 }

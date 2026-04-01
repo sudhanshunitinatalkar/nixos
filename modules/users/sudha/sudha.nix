@@ -27,19 +27,8 @@
       nixd 
       nil
       cloudflared 
-      prusa-slicer 
-      libreoffice-fresh 
-      telegram-desktop
-      vlc 
-      obs-studio 
       cachix 
-      vscode 
       python3 
-      stm32cubemx 
-      minicom 
-      freecad 
-      impression
-      rpi-imager
     ];
 
     programs.git = {
