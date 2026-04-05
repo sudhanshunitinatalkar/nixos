@@ -7,6 +7,7 @@
       config.flake.nixosModules.cosmos-laptop
       config.flake.nixosModules.cosmos-laptop-hardware 
       config.flake.nixosModules.lenovo-ideapad-gaming3-nvidia
+      config.flake.nixosModules.plasma
     ];
   };
 }
