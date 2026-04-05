@@ -28,7 +28,9 @@
       nil
       cloudflared 
       cachix 
-      python3 
+      python3
+      vscode
+      telegram-desktop
     ];
 
     programs.git = {
