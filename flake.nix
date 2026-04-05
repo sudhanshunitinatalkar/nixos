@@ -18,6 +18,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -33,4 +37,4 @@
         inputs.home-manager.flakeModules.home-manager   
       ];
     };
-}
+} 
