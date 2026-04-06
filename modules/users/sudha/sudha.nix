@@ -31,6 +31,7 @@
       python3
       vscode
       telegram-desktop
+      libreoffice-fresh
     ];
 
     programs.git = {
