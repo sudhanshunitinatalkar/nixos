@@ -67,6 +67,23 @@
       #   package = pkgs.ollama-cuda;
       # };
       openssh.enable = true;
+
+      avahi = {
+        enable = true;
+        nssmdns4 = true; # Allow resolving .local addresses
+        # Important: This allows the datalogger to also BE FOUND 
+        # as protos.local if you want to SSH into it via name.
+        publish = {
+          enable = true;
+          addresses = true;
+          workstation = true;
+        };
+      };
+
+      services.resolved = {
+        enable = true;
+        llmnr = "true"; # Enable Windows-style resolution
+      };
     };
 
     time = {

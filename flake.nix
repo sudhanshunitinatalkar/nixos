@@ -38,7 +38,6 @@
       ];
       imports = [
         (inputs.import-tree ./modules)
-        inputs.home-manager.flakeModules.home-manager   
       ];
     };
 }

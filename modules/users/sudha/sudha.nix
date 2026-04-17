@@ -1,6 +1,7 @@
 { inputs, config, lib, pkgs, ... }:
 {
-  flake.homeModules.sudha = { pkgs, ... }: {
+  # Added 'inputs' to the argument list here
+  flake.homeModules.sudha = { pkgs, inputs, ... }: {
     nixpkgs.config.allowUnfree = true;
 
     # REQUIRED for standalone Home Manager
@@ -10,6 +11,7 @@
 
     programs.home-manager.enable = true;
 
+    # COMBINED LIST: All packages go inside this single block
     home.packages = with pkgs; [
       tree 
       util-linux 
@@ -32,6 +34,11 @@
       vscode
       telegram-desktop
       libreoffice-fresh
+      spotify
+      droidcam
+      
+      # Zen Browser pulled into the main list
+      inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default 
     ];
 
     programs.git = {
@@ -41,7 +48,9 @@
         email = "atalkarsudhanshu@proton.me";
       };
     };
-
     
+    # This manually links the Plasma bridge into Zen's config folder
+    home.file.".mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = 
+      "${pkgs.kdePackages.plasma-browser-integration}/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json";
   };
 }

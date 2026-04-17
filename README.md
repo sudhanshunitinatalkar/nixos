@@ -35,3 +35,10 @@ find . -type f -not -path '*/\.*' -not -name 'flake.lock' -not -name '*.jpg' -pr
       echo ""
     done
 ```
+
+# 1. Format the SSD using your Disko layout. 
+# This creates the EFI and root partitions and mounts them to /mnt
+sudo nix run github:nix-community/disko/latest -- --mode disko ./disko/cdsp-pc.nix
+
+# 2. Install NixOS and your flake onto the newly formatted SSD
+sudo nixos-install --flake .#protoThingsboardOS --root /mnt

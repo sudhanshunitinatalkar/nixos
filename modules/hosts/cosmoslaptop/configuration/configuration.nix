@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.cosmos-laptop = { inputs, pkgs, ... }:
+  flake.nixosModules.cosmos-laptop = { inputs, pkgs, lib, config,  ... }:
   {
     nix.settings = 
     {
@@ -78,6 +78,18 @@
     {
       keyMap = "us";
     }; 
+
+
+      # Make virtual camera and audio drivers available to the kernel
+    boot.extraModulePackages = with config.boot.kernelPackages; [ 
+      v4l2loopback 
+    ];
+  
+    # Force the kernel to load them at boot
+    boot.kernelModules = [ 
+      "v4l2loopback" 
+      "snd-aloop" 
+    ];
 
   };
 }
