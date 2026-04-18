@@ -45,10 +45,10 @@
     services =
     {
       printing.enable = true;
-      ollama = {
-        enable = true;
-        package = pkgs.ollama-cuda;
-      };
+      # ollama = {
+      #   enable = true;
+      #   package = pkgs.ollama-cuda;
+      # };
 
       pipewire =
       {
